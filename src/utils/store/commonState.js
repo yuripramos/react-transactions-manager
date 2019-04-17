@@ -1,8 +1,12 @@
 const commonState = {
   originAccount: {
-    number: "21321",
-    availableBalance: 10000
+    number: "1123-A",
+    availableBalance: 10000,
+    givenName: "Yuri",
+    surName: "Ramos",
+    document: "11111111"
   },
+  transfers: [],
   favoredData: {},
   transferData: {}
 };

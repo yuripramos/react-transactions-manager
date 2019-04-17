@@ -48,14 +48,6 @@ export const Button = styled(ButtonRaw)`
   line-height: ${rem(40)};
   width: ${rem(150)};
 
-  ${({ isNewTransfer }) =>
-    isNewTransfer &&
-    css`
-      margin-top: ${rem(10)};
-      min-width: ${rem(150)};
-      width: auto;
-    `};
-
   :not(:last-child) {
     margin-right: ${rem(12)};
   }

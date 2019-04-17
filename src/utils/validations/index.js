@@ -11,6 +11,12 @@ export const checkValue = value => {
   return null;
 };
 
+export const checkTypeOfDocument = value => {
+  if (value) {
+    return value.length > 2;
+  }
+  return null;
+};
 export const checkFavored = favored => {
   if (favored) {
     return favored.length > 5;
@@ -39,10 +45,9 @@ export const checkAccount = account => {
   return null;
 };
 
-// export const hasAvailableBalance = (originAccount, transferData, accounts) => {
-//   const value = Number.parseFloat(unFormatNumber(transferData.value));
-//   const balance = accounts.find(c => c.accountNumber === originAccount.number)
-//     .availableBalance;
+export const hasAvailableBalance = (originAccount, transferData) => {
+  const value = Number.parseFloat(unFormatNumber(transferData.value));
+  const balance = originAccount.availableBalance;
 
-//   return balance >= value;
-// };
+  return balance >= value;
+};

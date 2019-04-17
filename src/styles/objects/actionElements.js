@@ -4,7 +4,6 @@ import { rem, media } from "../../styles/tools";
 import { lightBlue, green, white, grey, darkBlue } from "../../styles/settings";
 
 export const ButtonTag = styled.button`
-  font-family: "Lato Bold", "Lato";
   background: white;
   border-radius: ${rem(4)};
   border: 0;

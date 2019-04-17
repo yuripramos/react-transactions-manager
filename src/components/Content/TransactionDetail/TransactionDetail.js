@@ -24,41 +24,25 @@ import {
   checkValue,
   checkBank,
   checkAgency,
-  checkAccount
+  checkAccount,
+  checkTypeOfDocument
 } from "../../../utils/validations";
 
 export const isDisabled = (
-  isValidDate,
   isValidValue,
   isValidBank,
   isValidAgency,
-  isValidAccount,
-  isValidOriginAccount
+  isValidAccount
 ) => {
-  return !(
-    isValidDate &&
-    isValidValue &&
-    isValidBank &&
-    isValidAgency &&
-    isValidAccount &&
-    isValidOriginAccount
-  );
+  return !(isValidValue && isValidBank && isValidAgency && isValidAccount);
 };
 
 class TransactionDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isCreateTransferEnabled: true
-    };
+    this.state = {};
     this.inputRef = React.createRef();
     this.innerRef = React.createRef();
-  }
-
-  closeEftCreation() {
-    this.setState({
-      isCreateTransferEnabled: false
-    });
   }
 
   render() {
@@ -68,8 +52,12 @@ class TransactionDetail extends Component {
       handleUserInputTransferCurrency,
       transferData,
       favoredData,
-      originAccount
+      originAccount,
+      createTransfer,
+      transfers,
+      resetFields
     } = this.props;
+
     return (
       <Result large>
         <form noValidate>
@@ -77,7 +65,7 @@ class TransactionDetail extends Component {
             <TitleWrapper lowMargin>
               <FieldsetTitle>ORIGIN ACCOUNT</FieldsetTitle>
             </TitleWrapper>
-            account value
+            {originAccount.number}
             <AvailableBalBox>
               <TitleWrapper>
                 <FieldsetTitle>AVAILABLE BALANCE</FieldsetTitle>
@@ -202,19 +190,18 @@ class TransactionDetail extends Component {
           </Fieldset>
           <ButtonWrapper>
             <Button
-              // disabled={isDisabled(
-              //   checkDate(transferData.date),
-              //   checkValue(transferData.value),
-              //   checkBank(favoredData.bank),
-              //   checkAgency(favoredData.agency),
-              //   checkAccount(favoredData.account),
-              // )}
+              disabled={isDisabled(
+                checkValue(transferData.value),
+                checkBank(favoredData.bank),
+                checkAgency(favoredData.agency),
+                checkAccount(favoredData.account),
+                checkTypeOfDocument(favoredData.documentType)
+              )}
               isCallToAction
-              // onClick={() => {
-              //   if (this.checkAvailableDate()) {
-              //     this.displayConfirmModal();
-              //   }
-              // }}
+              onClick={() => {
+                createTransfer(favoredData, transferData, originAccount);
+                resetFields();
+              }}
             >
               CREATE
             </Button>

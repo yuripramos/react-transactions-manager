@@ -14,22 +14,25 @@ class Content extends Component {
     super(props);
     this.innerRef = React.createRef();
   }
+
   async componentDidMount() {
-    this.props.AllShips(3);
+    this.props.mockGet();
   }
 
   render() {
-    const { shipsArray, ShowDetails, detailedShip } = this.props;
+    const {
+      shipsArray,
+      ShowDetails,
+      detailedShip,
+      transfers,
+      isFilled
+    } = this.props;
     return (
       <Container>
         <ContentWrapper>
           <Column width={isResponsive() ? 0 : 35}>
             <Hide below="md">
-              <TransactionList
-                ships={shipsArray}
-                ShowDetails={ShowDetails}
-                detailedShip={detailedShip}
-              />
+              <TransactionList transfers={transfers} />
             </Hide>
           </Column>
           <Column width={isResponsive() ? 100 : 65}>
