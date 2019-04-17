@@ -127,14 +127,6 @@ export const InputField = styled.input`
     border: solid ${rem(1)} ${darkBlue};
   }
 
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      border: 1px solid ${lighestgrey};
-      color: #939598;
-      cursor: not-allowed;
-    `};
-
   ${({ tinyLabels }) =>
     tinyLabels &&
     css`

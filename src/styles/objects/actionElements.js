@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import styled, { css } from "styled-components";
 import { rem, media } from "../../styles/tools";
 import { lightBlue, green, white, grey, darkBlue } from "../../styles/settings";

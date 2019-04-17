@@ -91,11 +91,11 @@ class Input extends Component {
       refType,
       prefix,
       maxLength,
-      disabled,
       ...props
     } = this.props;
     const { isFocused, emptyState, isValid } = this.state;
     if (maskType) {
+      console.log("val", typeof value);
       return (
         <InputWrapper valid={emptyState ? false : isValid} width={width}>
           <MaskedInput
@@ -139,11 +139,18 @@ class Input extends Component {
                 data-test={dataTest ? dataTest : Input.displayName}
                 isEmpty={!value}
                 tinyLabels={tinyLabels}
-                disabled={disabled}
               />
             )}
           />
           {label && <Label tinyLabels={tinyLabels}>{label}</Label>}
+          {typeof icon === "string" && (
+            <IconContainer>
+              <Icon type={icon} />
+            </IconContainer>
+          )}
+          {(isValid !== null || emptyState) && !disabled && (
+            <div>{isValid && !emptyState ? "valid" : "not"}</div>
+          )}
         </InputWrapper>
       );
     }
@@ -181,7 +188,6 @@ class Input extends Component {
           data-test={dataTest ? dataTest : Input.displayName}
           isEmpty={!value}
           tinyLabels={tinyLabels}
-          disabled={disabled}
         />
         {label && <Label tinyLabels={tinyLabels}>{label}</Label>}
         {/* {(isValid !== null || emptyState) && !disabled && (
@@ -211,8 +217,7 @@ Input.defaultProps = {
   tinyLabels: null,
   onBlur: () => {},
   value: "",
-  disableKeys: [],
-  disabled: false
+  disableKeys: []
 };
 
 Input.propTypes = {
@@ -227,8 +232,7 @@ Input.propTypes = {
   onBlur: func,
   onFocus: func,
   disableKeys: oneOfType([number, string, array]),
-  onChange: func,
-  disabled: bool
+  onChange: func
 };
 
 export default Input;
