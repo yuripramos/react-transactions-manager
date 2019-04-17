@@ -10,6 +10,7 @@ export default () => ({
   },
   handleUserInputTranferData: (state, e) => {
     const { name, value } = e.target;
+
     return {
       transferData: {
         ...state.transferData,
@@ -33,7 +34,6 @@ export default () => ({
   }),
   handleUserInputFavoredData: (state, e) => {
     const { name, value } = e.target;
-    console.log("name and val", name, value);
     return {
       favoredData: {
         ...state.favoredData,

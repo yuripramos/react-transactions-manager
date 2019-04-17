@@ -20,13 +20,47 @@ import {
   Result
 } from "./styles";
 import { toCurrency } from "../../../utils/currency";
+import {
+  checkValue,
+  checkBank,
+  checkAgency,
+  checkAccount
+} from "../../../utils/validations";
+
+export const isDisabled = (
+  isValidDate,
+  isValidValue,
+  isValidBank,
+  isValidAgency,
+  isValidAccount,
+  isValidOriginAccount
+) => {
+  return !(
+    isValidDate &&
+    isValidValue &&
+    isValidBank &&
+    isValidAgency &&
+    isValidAccount &&
+    isValidOriginAccount
+  );
+};
 
 class TransactionDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isCreateTransferEnabled: true
+    };
     this.inputRef = React.createRef();
+    this.innerRef = React.createRef();
   }
+
+  closeEftCreation() {
+    this.setState({
+      isCreateTransferEnabled: false
+    });
+  }
+
   render() {
     const {
       handleUserInputTranferData,
@@ -36,7 +70,6 @@ class TransactionDetail extends Component {
       favoredData,
       originAccount
     } = this.props;
-    console.log("props", this.props);
     return (
       <Result large>
         <form noValidate>
@@ -64,29 +97,27 @@ class TransactionDetail extends Component {
               onChange={handleUserInputTranferData}
               type="text"
               name="date"
-              // valid={() => checkDate(transferData.date)}
               value={transferData.date}
               label={"DATE"}
               maxLength={11}
               tinyLabels
-              // maskType="datetime"
+              ref={this.inputRef}
               innerRef={this.inputRef}
               refType={this.inputRef}
             />
             <Input
               onChange={e => {
                 const valueAsCurrency = toCurrency(e.target.value, ".", ",");
-                // handleUserInputTransferCurrency(valueAsCurrency);
+                handleUserInputTransferCurrency(valueAsCurrency);
               }}
               type="text"
               name="value"
+              valid={() => checkValue(transferData.value)}
               prefix={"R$"}
               maxLength={14}
               value={transferData.value}
               label="VALUE"
               tinyLabels
-              innerRef={this.inputRef}
-              refType={this.inputRef}
             />
           </Fieldset>
           <Fieldset width={55} adjust={-3} withRows>
@@ -106,13 +137,24 @@ class TransactionDetail extends Component {
                   tinyLabels
                   width={72}
                 />
+                <Dropdown
+                  onChange={handleUserInputFavoredData}
+                  name="documentType"
+                  list={[
+                    { name: "cpf", value: "cpf" },
+                    { name: "cnpj", value: "cnpj" }
+                  ]}
+                  value={favoredData.documentType}
+                  label={"type of document"}
+                  tinyLabels
+                  width={50}
+                />
                 <Input
                   type="text"
                   name="document"
                   onChange={handleUserInputFavoredData}
                   value={favoredData.document}
-                  label="CNPJ"
-                  // maskType="cpfcnpj"
+                  label="document"
                   tinyLabels
                   width={33}
                 />
@@ -127,7 +169,7 @@ class TransactionDetail extends Component {
                     { name: "Nubank", value: "Nubank" },
                     { name: "Bradesco", value: "Bradesco" }
                   ]}
-                  // valid={() => checkBank(favoredData.bank)}
+                  valid={() => checkBank(favoredData.bank)}
                   value={favoredData.bank}
                   label={"Bank"}
                   tinyLabels
@@ -139,6 +181,7 @@ class TransactionDetail extends Component {
                   type="text"
                   name="agency"
                   value={favoredData.agency}
+                  valid={() => checkAgency(favoredData.agency)}
                   label={"AGENCY"}
                   tinyLabels
                   width={20}
@@ -148,6 +191,7 @@ class TransactionDetail extends Component {
                   maxLength="11"
                   type="text"
                   name="account"
+                  valid={() => checkAccount(favoredData.account)}
                   value={favoredData.account}
                   label={"ACCOUNT"}
                   tinyLabels
@@ -164,7 +208,6 @@ class TransactionDetail extends Component {
               //   checkBank(favoredData.bank),
               //   checkAgency(favoredData.agency),
               //   checkAccount(favoredData.account),
-              //   checkOriginAccount(originAccount.number)
               // )}
               isCallToAction
               // onClick={() => {

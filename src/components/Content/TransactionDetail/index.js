@@ -7,6 +7,7 @@ import transferActions from "../../../actions/Transactions";
 
 export default connect(
   ({
+    isFilled,
     handleUserInputOriginAccount,
     accounts,
     originAccount,
@@ -17,6 +18,7 @@ export default connect(
     handleUserInputFavoredData,
     favoredData
   }) => ({
+    isFilled,
     handleUserInputOriginAccount,
     accounts,
     originAccount,

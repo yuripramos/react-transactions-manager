@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { string, func, bool, array, number, oneOfType } from "prop-types";
-import MaskedInput from "react-text-mask";
-import { datetimeMask, cpfcnpjMask } from "../../../utils/masks";
 
 /* eslint-disable */
 
@@ -94,67 +92,6 @@ class Input extends Component {
       ...props
     } = this.props;
     const { isFocused, emptyState, isValid } = this.state;
-    if (maskType) {
-      console.log("val", typeof value);
-      return (
-        <InputWrapper valid={emptyState ? false : isValid} width={width}>
-          <MaskedInput
-            mask={
-              (maskType === "datetime" && datetimeMask) ||
-              (maskType === "cpfcnpj" && cpfcnpjMask(value))
-            }
-            onChange={e => {
-              onChange && onChange(e);
-              this.setState({
-                emptyState: e.target.value === "",
-                isValid: null
-              });
-            }}
-            guide={false}
-            render={(refType, props) => (
-              <InputField
-                {...props}
-                required
-                maxLength={maxLength}
-                type={type}
-                value={value}
-                name={name}
-                onFocus={e => {
-                  onFocus && onFocus(e);
-                  this.setState({ isFocused: true });
-                }}
-                onBlur={e => {
-                  onBlur && onBlur(e);
-                  this.setState({
-                    isFocused: false,
-                    isValid: valid ? valid() : this.state.isValid
-                  });
-                }}
-                innerRef={refType}
-                ref={refType.current}
-                autoComplete="new-password"
-                placeholder={
-                  maskType === "datetime" && isFocused ? "MM/DD/YYYY" : ""
-                }
-                data-test={dataTest ? dataTest : Input.displayName}
-                isEmpty={!value}
-                tinyLabels={tinyLabels}
-              />
-            )}
-          />
-          {label && <Label tinyLabels={tinyLabels}>{label}</Label>}
-          {typeof icon === "string" && (
-            <IconContainer>
-              <Icon type={icon} />
-            </IconContainer>
-          )}
-          {(isValid !== null || emptyState) && !disabled && (
-            <div>{isValid && !emptyState ? "valid" : "not"}</div>
-          )}
-        </InputWrapper>
-      );
-    }
-
     return (
       <InputWrapper valid={emptyState ? false : isValid} width={width}>
         {prefix && (value || isFocused) && <Prefix>{prefix}</Prefix>}

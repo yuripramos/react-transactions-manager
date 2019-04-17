@@ -12,3 +12,23 @@ export default function formatNumber(value, numberOptions = {}) {
 
   return new Intl.NumberFormat("en-US", options).format(value);
 }
+
+export function unFormatNumber(value) {
+  value = value.toString();
+
+  value = value.replace(/,/g, "");
+
+  return parseFloat(value);
+}
+
+export function formatCPF(value) {
+  return value
+    .toString()
+    .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4");
+}
+
+export function formatCNPJ(value) {
+  return value
+    .toString()
+    .replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, "$1.$2.$3/$4-$5");
+}
