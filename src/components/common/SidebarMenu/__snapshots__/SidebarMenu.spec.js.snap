@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SidebarMenu component should match snapshot 1`] = `
+<styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_politics"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Politics
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    onClick={[Function]}
+  >
+    <styled.span>
+      World
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_technology"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Technology
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_health"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Health
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_science"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Science
+    </styled.span>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`SidebarMenu component should match snapshot for desktop 1`] = `
+<styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_politics"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Politics
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    onClick={[Function]}
+  >
+    <styled.span>
+      World
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_technology"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Technology
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_health"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Health
+    </styled.span>
+  </styled.div>
+  <styled.div
+    active={false}
+    data-test="Navbar_science"
+    onClick={[Function]}
+  >
+    <styled.span>
+      Science
+    </styled.span>
+  </styled.div>
+</styled.div>
+`;

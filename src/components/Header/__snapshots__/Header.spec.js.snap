@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should match snapshot with props 1`] = `
+<styled.header>
+  <Container>
+    <Row>
+      <Column>
+        <styled.div>
+          <IconGenerator
+            color="#333"
+            height="56px"
+            name="Logo"
+            width="490px"
+          />
+        </styled.div>
+      </Column>
+    </Row>
+    <Row>
+      <Column>
+        <SidebarMenu
+          currentLocation=""
+        />
+      </Column>
+    </Row>
+  </Container>
+</styled.header>
+`;

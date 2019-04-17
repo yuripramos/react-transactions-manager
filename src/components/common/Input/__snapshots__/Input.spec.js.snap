@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component should match snapshot 1`] = `
+<styled.div
+  valid={null}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="My input"
+    required={true}
+    tinyLabels={null}
+    type="submit"
+    value=""
+  />
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with currency mask 1`] = `
+<styled.div
+  valid={null}
+>
+  <t
+    guide={false}
+    mask={false}
+    onChange={[Function]}
+    render={[Function]}
+  />
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with datetime mask 1`] = `
+<styled.div
+  valid={null}
+>
+  <t
+    guide={false}
+    mask={
+      Array [
+        /\\\\d/,
+        /\\\\d/,
+        "/",
+        /\\\\d/,
+        /\\\\d/,
+        "/",
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+      ]
+    }
+    onChange={[Function]}
+    render={[Function]}
+  />
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with datetime mask 2`] = `
+<styled.div
+  valid={null}
+>
+  <t
+    guide={false}
+    mask={
+      Array [
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+        ".",
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+        ".",
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+        "-",
+        /\\\\d/,
+        /\\\\d/,
+        /\\\\d/,
+      ]
+    }
+    onChange={[Function]}
+    render={[Function]}
+  />
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with error validation 1`] = `
+<styled.div
+  valid={false}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="My input"
+    required={true}
+    tinyLabels={null}
+    type="submit"
+    value=""
+  />
+  <styled.div>
+    <Icon
+      color={null}
+      cursor={false}
+      fixCrossAxisAlign={null}
+      height="24"
+      type="Attention"
+      width="24"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with icon 1`] = `
+<styled.div
+  valid={true}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="My input"
+    required={true}
+    tinyLabels={null}
+    type="submit"
+    value=""
+  />
+  <styled.div>
+    <Icon
+      color={null}
+      cursor={false}
+      fixCrossAxisAlign={null}
+      height={null}
+      type="Icon"
+      width={null}
+    />
+  </styled.div>
+  <styled.div>
+    <Icon
+      color={null}
+      cursor={false}
+      fixCrossAxisAlign={null}
+      height="13"
+      type="Check"
+      width="13"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with label 1`] = `
+<styled.div
+  valid={null}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder=""
+    required={true}
+    tinyLabels={null}
+    type="submit"
+    value=""
+  />
+  <styled.label
+    tinyLabels={null}
+  >
+    label
+  </styled.label>
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with no validation 1`] = `
+<styled.div
+  valid={null}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="My input"
+    required={true}
+    tinyLabels={null}
+    type="submit"
+    value=""
+  />
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with prefix 1`] = `
+<styled.div
+  valid={null}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="My input"
+    prefix="$"
+    required={true}
+    tinyLabels={null}
+    type="text"
+    value=""
+  />
+</styled.div>
+`;
+
+exports[`Input component should match snapshot with success validation 1`] = `
+<styled.div
+  valid={true}
+>
+  <styled.input
+    autoComplete="new-password"
+    data-test="Input"
+    disableKeys={Array []}
+    disabled={false}
+    isEmpty={true}
+    name="input"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    placeholder="My input"
+    required={true}
+    tinyLabels={null}
+    type="submit"
+    value=""
+  />
+  <styled.div>
+    <Icon
+      color={null}
+      cursor={false}
+      fixCrossAxisAlign={null}
+      height="13"
+      type="Check"
+      width="13"
+    />
+  </styled.div>
+</styled.div>
+`;

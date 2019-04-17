@@ -1,0 +1,40 @@
+{
+  "name": "react-track-shipping",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=8.9.3"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "grid-styled": "^5.0.2",
+    "history": "^4.9.0",
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.23",
+    "react": "^16.8.6",
+    "react-burger-menu": "negomi/react-burger-menu",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.8",
+    "react-text-mask": "^5.4.3",
+    "redux-zero": "^5.0.2",
+    "shortid": "^2.2.14",
+    "styled-components": "^4.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "installation": "npm install"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

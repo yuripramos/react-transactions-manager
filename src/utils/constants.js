@@ -1,0 +1,10 @@
+export const SCREEN_LG = 1279;
+export const SCREEN_MD = 992;
+export const SCREEN_SM = 767;
+export const SCREEN_XS = 449;
+export const SCREEN_XXS = 319;
+export const TRUE = "True";
+export const FALSE = "False";
+export const BOOLEAN = "boolean";
+export const ES_ES = "es-ES";
+export const EN_US = "en-US";

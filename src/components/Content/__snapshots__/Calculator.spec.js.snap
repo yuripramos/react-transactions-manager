@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calculator should match snapshot 1`] = `
+<Container>
+  <Row>
+    <styled.div>
+      <ResultComponent
+        result=""
+      />
+      <KeyPadComponent
+        onClick={[Function]}
+      />
+    </styled.div>
+  </Row>
+</Container>
+`;
