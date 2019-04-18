@@ -6,7 +6,6 @@ import {
   black50,
   darkBlue,
   red,
-  lighestgrey,
   grey180
 } from "../../../styles/settings";
 
@@ -26,7 +25,7 @@ export const IconContainer = styled.div`
 
 export const Prefix = styled.span`
   position: absolute;
-  padding: ${rem(26)} ${rem(0)} ${rem(0)} ${rem(10)};
+  padding: ${rem(15)} ${rem(0)} ${rem(0)} ${rem(10)};
   pointer-events: none;
   font-family: Lato;
   font-size: ${rem(13)};
@@ -65,11 +64,10 @@ export const Label = styled.label`
 `;
 
 const revealContent = css`
-  padding-top: ${rem(15)};
+  /* padding-top: ${rem(3)}; */
 
   ~ ${Label} {
     top: ${rem(22)};
-    font-family: Lato Bold;
     font-size: ${rem(11)};
     letter-spacing: ${rem(0.1)};
     text-align: left;
@@ -78,7 +76,7 @@ const revealContent = css`
 `;
 
 const revealContent2 = css`
-  padding-top: ${rem(15)};
+  /* padding-top: ${rem(3)}; */
 
   ~ ${Label} {
     top: ${rem(10)};
@@ -91,7 +89,7 @@ const revealContent2 = css`
 `;
 
 const revealContent3 = css`
-  padding-top: ${rem(15)};
+  /* padding-top: ${rem(3)}; */
 
   ~ ${Label} {
     top: ${rem(12)};
@@ -101,11 +99,10 @@ const revealContent3 = css`
 
 export const InputField = styled.input`
   width: 100%;
-  height: ${rem(62)};
+  height: ${rem(46)};
   border-radius: ${rem(4)};
   background-color: ${white};
   border: solid ${rem(1)} ${grey30};
-  font-family: Lato;
   font-size: ${rem(13)};
   letter-spacing: ${rem(0.1)};
   color: ${black50};
@@ -147,8 +144,8 @@ export const InputWrapper = styled.div`
   width: 100%;
   display: inline-block;
   position: relative;
-  height: ${rem(62)};
-
+  height: ${rem(38)};
+  margin-right: ${rem(25)};
   input:not(:focus) {
     ${({ valid }) =>
       valid === false &&

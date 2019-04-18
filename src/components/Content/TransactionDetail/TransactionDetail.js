@@ -2,21 +2,19 @@ import React, { Component } from "react";
 import { isResponsive } from "../../../utils/getResolution";
 import Input from "../../common/Input";
 import Dropdown from "../../common/Dropdown";
-import { Row, Container, Column } from "../../../styles/grid";
+import { Row } from "../../../styles/grid";
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
 import {
-  DashboardWrapper,
   Fieldset,
   FieldsetTitle,
   TitleWrapper,
-  Content,
   FloatingText,
   AvailableBalBox,
   RowsWrapper,
   Button,
   Currency,
   ButtonWrapper,
-  ShowHideWrapper,
-  IconWrapper,
   Result
 } from "./styles";
 import { toCurrency } from "../../../utils/currency";
@@ -40,9 +38,22 @@ export const isDisabled = (
 class TransactionDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selectedDay: undefined,
+      isDisabled: false
+    };
+    this.handleDayChange = this.handleDayChange.bind(this);
     this.inputRef = React.createRef();
     this.innerRef = React.createRef();
+  }
+
+  handleDayChange(selectedDay, modifiers, dayPickerInput) {
+    const input = dayPickerInput.getInput();
+    this.setState({
+      selectedDay,
+      isEmpty: !input.value.trim(),
+      isDisabled: modifiers.disabled === true
+    });
   }
 
   render() {
@@ -54,14 +65,13 @@ class TransactionDetail extends Component {
       favoredData,
       originAccount,
       createTransfer,
-      transfers,
       resetFields
     } = this.props;
-
+    const { selectedDay, isDisabled } = this.state;
     return (
       <Result large>
         <form noValidate>
-          <Fieldset width={18}>
+          <Fieldset width={20}>
             <TitleWrapper lowMargin>
               <FieldsetTitle>ORIGIN ACCOUNT</FieldsetTitle>
             </TitleWrapper>
@@ -77,21 +87,32 @@ class TransactionDetail extends Component {
               </FloatingText>
             </AvailableBalBox>
           </Fieldset>
-          <Fieldset width={22} adjust={-4}>
+          <Fieldset width={30} adjust={-4}>
             <TitleWrapper bigMargin>
               <FieldsetTitle>TRANSFER DATA</FieldsetTitle>
             </TitleWrapper>
-            <Input
+            {/* <Input
               onChange={handleUserInputTranferData}
               type="text"
               name="date"
               value={transferData.date}
               label={"DATE"}
               maxLength={11}
+              width={72}
               tinyLabels
               ref={this.inputRef}
               innerRef={this.inputRef}
               refType={this.inputRef}
+            /> */}
+            <DayPickerInput
+              value={selectedDay}
+              onDayChange={this.handleDayChange}
+              dayPickerProps={{
+                selectedDays: selectedDay,
+                disabledDays: {
+                  daysOfWeek: [0, 6]
+                }
+              }}
             />
             <Input
               onChange={e => {
@@ -102,13 +123,14 @@ class TransactionDetail extends Component {
               name="value"
               valid={() => checkValue(transferData.value)}
               prefix={"R$"}
+              width={61}
               maxLength={14}
               value={transferData.value}
               label="VALUE"
               tinyLabels
             />
           </Fieldset>
-          <Fieldset width={55} adjust={-3} withRows>
+          <Fieldset width={98} adjust={-3} withRows>
             <TitleWrapper withRows>
               <FieldsetTitle>FAVORED DATA</FieldsetTitle>
             </TitleWrapper>
@@ -121,9 +143,8 @@ class TransactionDetail extends Component {
                   onChange={handleUserInputFavoredData}
                   value={favoredData.name}
                   label="FAVORED"
-                  dataTest="recipientName"
                   tinyLabels
-                  width={72}
+                  width={60}
                 />
                 <Dropdown
                   onChange={handleUserInputFavoredData}
@@ -135,7 +156,7 @@ class TransactionDetail extends Component {
                   value={favoredData.documentType}
                   label={"type of document"}
                   tinyLabels
-                  width={50}
+                  width={30}
                 />
                 <Input
                   type="text"
@@ -144,7 +165,7 @@ class TransactionDetail extends Component {
                   value={favoredData.document}
                   label="document"
                   tinyLabels
-                  width={33}
+                  width={35}
                 />
               </Row>
               <Row>
@@ -172,7 +193,7 @@ class TransactionDetail extends Component {
                   valid={() => checkAgency(favoredData.agency)}
                   label={"AGENCY"}
                   tinyLabels
-                  width={20}
+                  width={15}
                 />
                 <Input
                   onChange={handleUserInputFavoredData}
@@ -183,20 +204,20 @@ class TransactionDetail extends Component {
                   value={favoredData.account}
                   label={"ACCOUNT"}
                   tinyLabels
-                  width={30}
+                  width={25}
                 />
               </Row>
             </RowsWrapper>
           </Fieldset>
           <ButtonWrapper>
             <Button
-              disabled={isDisabled(
-                checkValue(transferData.value),
-                checkBank(favoredData.bank),
-                checkAgency(favoredData.agency),
-                checkAccount(favoredData.account),
-                checkTypeOfDocument(favoredData.documentType)
-              )}
+              // disabled={isDisabled(
+              //   checkValue(transferData.value),
+              //   checkBank(favoredData.bank),
+              //   checkAgency(favoredData.agency),
+              //   checkAccount(favoredData.account),
+              //   checkTypeOfDocument(favoredData.documentType)
+              // )}
               isCallToAction
               onClick={() => {
                 createTransfer(favoredData, transferData, originAccount);

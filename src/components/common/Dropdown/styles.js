@@ -52,7 +52,7 @@ export const DropdownWrapper = styled.div`
   letter-spacing: ${rem(0.1)};
   display: inline-block;
   position: relative;
-  margin: ${rem(9)} ${rem(6)} ${rem(6)} 0;
+  margin: 0 ${rem(6)} ${rem(6)} 0;
 
   select:not(:focus) {
     ${({ valid }) =>

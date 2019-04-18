@@ -25,7 +25,6 @@ function TransactionList({ transfers }) {
       </City>
     );
   };
-  console.log("isFilled", isFilled, transfers);
   const isFilled = transfers.length > 0;
   return (
     <ListWrapper>

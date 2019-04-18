@@ -56,14 +56,13 @@ export const Button = styled(ButtonRaw)`
 export const Title = styled.h1`
   font-size: ${rem(24)};
   margin: ${rem(25)} 0 ${rem(10)};
-  font-family: "Lato Bold", Lato;
   color: ${darkGreen};
   width: 100%;
 `;
 
 export const Fieldset = styled.div`
   padding: ${rem(14)};
-  margin: 0 ${rem(5)};
+  margin: ${rem(20)} ${rem(5)};
   height: ${rem(180)};
   color: ${grey90};
   border: solid ${rem(1)} ${blue30};

@@ -127,15 +127,6 @@ class Input extends Component {
           tinyLabels={tinyLabels}
         />
         {label && <Label tinyLabels={tinyLabels}>{label}</Label>}
-        {/* {(isValid !== null || emptyState) && !disabled && (
-          <ValidityContainer>
-            {isValid && !emptyState ? (
-              <Icon type="Check" width="13" height="13" />
-            ) : (
-              <Icon type="Attention" width="24" height="24" />
-            )}
-          </ValidityContainer>
-        )} */}
       </InputWrapper>
     );
   }

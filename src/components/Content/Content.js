@@ -15,10 +15,6 @@ class Content extends Component {
     this.innerRef = React.createRef();
   }
 
-  async componentDidMount() {
-    this.props.mockGet();
-  }
-
   render() {
     const {
       shipsArray,

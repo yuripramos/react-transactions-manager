@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { rem } from "../../../styles/tools";
+import { rem, media } from "../../../styles/tools";
 import {
   black,
   grey10,
@@ -14,10 +14,13 @@ export const ListWrapper = styled.div`
   background: ${lighestgrey};
   color: ${black};
   height: 100%;
+  min-width: ${rem(300)};
+  ${media.lg(css`
+    min-width: ${rem(436)};
+  `)};
   align-content: flex-start;
   overflow-y: auto;
 `;
-
 
 export const Item = styled.div`
   width: 100%;
@@ -27,11 +30,11 @@ export const Item = styled.div`
   cursor: pointer;
   display: inline-flex;
   ${({ isActive }) =>
-  isActive &&
+    isActive &&
     css`
-    border-left: solid 1px ${grey10};
+      border-left: solid 1px ${grey10};
       background: ${trueWhite};
-  `};
+    `};
 `;
 
 export const City = styled.span`
@@ -47,14 +50,14 @@ export const Description = styled.div`
   height: 30px;
   font-weight: 700;
   color: ${black40};
-    ${({ equipment }) =>
-  equipment &&
-  css`
-    color: ${black40};
-    font-size: ${rem(12)};
-    font-weight: 400;
-    justify-content: flex-start;
-  `};
+  ${({ equipment }) =>
+    equipment &&
+    css`
+      color: ${black40};
+      font-size: ${rem(12)};
+      font-weight: 400;
+      justify-content: flex-start;
+    `};
 `;
 
 export const Arrow = styled.span`
@@ -73,9 +76,8 @@ export const Address = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   ${({ spacing }) =>
-  spacing &&
-      css`
+    spacing &&
+    css`
       margin-left: 10px;
-  `};
+    `};
 `;
-
