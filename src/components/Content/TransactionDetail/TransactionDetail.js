@@ -3,8 +3,7 @@ import { isResponsive } from "../../../utils/getResolution";
 import Input from "../../common/Input";
 import Dropdown from "../../common/Dropdown";
 import { Row } from "../../../styles/grid";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
+
 import {
   Fieldset,
   FieldsetTitle,
@@ -38,22 +37,9 @@ export const isDisabled = (
 class TransactionDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedDay: undefined,
-      isDisabled: false
-    };
-    this.handleDayChange = this.handleDayChange.bind(this);
+    this.state = {};
     this.inputRef = React.createRef();
     this.innerRef = React.createRef();
-  }
-
-  handleDayChange(selectedDay, modifiers, dayPickerInput) {
-    const input = dayPickerInput.getInput();
-    this.setState({
-      selectedDay,
-      isEmpty: !input.value.trim(),
-      isDisabled: modifiers.disabled === true
-    });
   }
 
   render() {
@@ -67,7 +53,6 @@ class TransactionDetail extends Component {
       createTransfer,
       resetFields
     } = this.props;
-    const { selectedDay, isDisabled } = this.state;
     return (
       <Result large>
         <form noValidate>
@@ -91,28 +76,15 @@ class TransactionDetail extends Component {
             <TitleWrapper bigMargin>
               <FieldsetTitle>TRANSFER DATA</FieldsetTitle>
             </TitleWrapper>
-            {/* <Input
+            <Input
               onChange={handleUserInputTranferData}
-              type="text"
+              type="date"
               name="date"
               value={transferData.date}
               label={"DATE"}
               maxLength={11}
               width={72}
               tinyLabels
-              ref={this.inputRef}
-              innerRef={this.inputRef}
-              refType={this.inputRef}
-            /> */}
-            <DayPickerInput
-              value={selectedDay}
-              onDayChange={this.handleDayChange}
-              dayPickerProps={{
-                selectedDays: selectedDay,
-                disabledDays: {
-                  daysOfWeek: [0, 6]
-                }
-              }}
             />
             <Input
               onChange={e => {

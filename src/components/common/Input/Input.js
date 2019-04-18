@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { string, func, bool, array, number, oneOfType } from "prop-types";
-
+import DayPickerInput from "react-day-picker/DayPickerInput";
+import "react-day-picker/lib/style.css";
 /* eslint-disable */
 
 import {
@@ -10,7 +11,9 @@ import {
   IconContainer,
   ValidityContainer,
   Tooltip,
-  Prefix
+  Prefix,
+  WrapperDayPicker,
+  InputDayPicker
 } from "./styles";
 import Icon from "../Icon";
 
@@ -23,12 +26,15 @@ export const KEYCODES = {
 class Input extends Component {
   constructor(props) {
     super(props);
-    this.onKeyDown = this._onKeyDown.bind(this);
     this.state = {
       isFocused: false,
       emptyState: false,
-      isValid: typeof props.valid === "boolean" ? props.valid : null
+      isValid: typeof props.valid === "boolean" ? props.valid : null,
+      selectedDay: undefined,
+      isDisabled: false
     };
+    this.onKeyDown = this._onKeyDown.bind(this);
+    this.handleDayChange = this.handleDayChange.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -68,6 +74,23 @@ class Input extends Component {
     onKeyDown && onKeyDown(event);
   }
 
+  handleDayChange(selectedDay, modifiers, dayPickerInput) {
+    const input = dayPickerInput.getInput();
+    this.setState({
+      selectedDay,
+      isEmpty: !input.value.trim(),
+      isDisabled: modifiers.disabled === true
+    });
+
+    const syntheticEvent = {
+      target: {
+        name: this.props.name,
+        value: selectedDay
+      }
+    };
+    this.props.onChange(syntheticEvent);
+  }
+
   render() {
     const {
       label,
@@ -91,7 +114,29 @@ class Input extends Component {
       maxLength,
       ...props
     } = this.props;
-    const { isFocused, emptyState, isValid } = this.state;
+    const {
+      isFocused,
+      emptyState,
+      isValid,
+      selectedDay,
+      isDisabled
+    } = this.state;
+    if (type === "date") {
+      return (
+        <WrapperDayPicker>
+          <DayPickerInput
+            value={selectedDay}
+            onDayChange={this.handleDayChange}
+            dayPickerProps={{
+              selectedDays: selectedDay,
+              disabledDays: {
+                daysOfWeek: [0, 6]
+              }
+            }}
+          />
+        </WrapperDayPicker>
+      );
+    }
     return (
       <InputWrapper valid={emptyState ? false : isValid} width={width}>
         {prefix && (value || isFocused) && <Prefix>{prefix}</Prefix>}

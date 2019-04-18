@@ -1,7 +1,6 @@
 import * as SHIPS_API from "../../services/Ships";
-import moment from "moment";
 import { unFormatNumber } from "../../utils/formatNumber";
-import { hasAvailableBalance } from "../../utils/validations";
+import { availableBalance } from "../../utils/validations";
 
 export default () => ({
   AllShips: async (state, n) => {
@@ -18,7 +17,6 @@ export default () => ({
   },
   handleUserInputTranferData: (state, e) => {
     const { name, value } = e.target;
-
     return {
       transferData: {
         ...state.transferData,
@@ -67,7 +65,7 @@ export default () => ({
         bankName: favoredData.bank,
         bankBranch: favoredData.agency,
         bankAccount: favoredData.account,
-        name: `${originAccount.givenName} ${originAccount.surname}`,
+        name: `${originAccount.givenName} ${originAccount.surName}`,
         taxId: originAccount.document
       },
       document: favoredData.document,
@@ -77,13 +75,18 @@ export default () => ({
       // dueDate: parseInt(
       //   moment(transferData.date, "MM-DD-YYYY", "X").format("x")
       // ),
-      originAccount: originAccount.number,
-      awaitBalance: !hasAvailableBalance(originAccount, transferData)
+      originAccount: originAccount.number
     };
 
     const transfers = [...state.transfers, body];
 
-    return { transfers };
+    return {
+      transfers: transfers,
+      originAccount: {
+        ...state.originAccount,
+        availableBalance: availableBalance(originAccount, transferData)
+      }
+    };
   },
   resetFields: _ => {
     return {

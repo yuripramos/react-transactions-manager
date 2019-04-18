@@ -24,7 +24,7 @@ export const ListWrapper = styled.div`
 
 export const Item = styled.div`
   width: 100%;
-  padding: ${rem(30)};
+  padding: ${rem(35)} ${rem(30)};
   border-bottom: solid 1px ${grey10};
   height: ${rem(60)};
   cursor: pointer;
@@ -50,10 +50,12 @@ export const Description = styled.div`
   height: 30px;
   font-weight: 700;
   color: ${black40};
-  ${({ equipment }) =>
-    equipment &&
+  ${({ recipient }) =>
+    recipient &&
     css`
+      margin-top: ${rem(20)};
       color: ${black40};
+      height: ${rem(55)};
       font-size: ${rem(12)};
       font-weight: 400;
       justify-content: flex-start;
@@ -67,6 +69,8 @@ export const Arrow = styled.span`
 
 export const DatesStyle = styled.div`
   font-size: ${rem(11)};
+  width: 100%;
+  display: inline-flex;
   color: ${grey10};
   padding: ${rem(5)} 0;
   font-weight: 300;

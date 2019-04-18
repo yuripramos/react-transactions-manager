@@ -15,16 +15,6 @@ import {
 } from "./styles";
 
 function TransactionList({ transfers }) {
-  const getCity = (obj, index) => {
-    return (
-      <City>
-        {`${obj.stops[index].city}, ${obj.stops[index].state}  ${
-          obj.stops[index].zipcode
-        }
-        `}
-      </City>
-    );
-  };
   const isFilled = transfers.length > 0;
   return (
     <ListWrapper>
@@ -32,28 +22,25 @@ function TransactionList({ transfers }) {
         transfers.map((e, i) => (
           <Item key={i}>
             <Address>
-              <Description equipment>
-                <Icon name="Truck" width="30px" height="30px" />
+              <Description recipient>
+                <Icon name="Transactions" />
+                <DatesStyle>{e.recipient.taxId}</DatesStyle>
               </Description>
               {e.recipient.name}
-              <Hide below="md">
-                <DatesStyle>
-                  {/* {moment(e.stops[0].windowStart).format("dddd")},{" "}
-                  {moment(e.stops[0].windowStart).format("MMM Do YYYY")} */}
-                </DatesStyle>
-              </Hide>
+              <Hide below="md" />
             </Address>
             <Arrow> > </Arrow>
             <Address spacing>
-              <Description>{e.ammount}</Description>
-              {e.favoredName}
+              <Description>R$ {e.ammount}</Description>
+              <DatesStyle>{`${e.documentType}: ${e.document}`}</DatesStyle>
               <Hide below="md">
                 <DatesStyle>
-                  {` ${e.recipient.bank} ${e.recipient.agency} `}
-                  {e.recipient.bankAccount}
-                  {`${e.documentType} ${e.document}`}
+                  {` ${e.recipient.bankName} ${e.recipient.bankBranch}/ ${
+                    e.recipient.bankAccount
+                  }`}
                 </DatesStyle>
               </Hide>
+              {e.favoredName}
             </Address>
           </Item>
         ))

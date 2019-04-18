@@ -45,9 +45,8 @@ export const checkAccount = account => {
   return null;
 };
 
-export const hasAvailableBalance = (originAccount, transferData) => {
+export const availableBalance = (originAccount, transferData) => {
   const value = Number.parseFloat(unFormatNumber(transferData.value));
-  const balance = originAccount.availableBalance;
-
-  return balance >= value;
+  const balance = Number.parseFloat(originAccount.availableBalance);
+  return balance - value;
 };

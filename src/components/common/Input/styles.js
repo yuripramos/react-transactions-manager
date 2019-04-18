@@ -1,10 +1,12 @@
 import styled, { css } from "styled-components";
 import { rem } from "../../../styles/tools";
+
 import {
   white,
   grey30,
   black50,
   darkBlue,
+  lightestBlue,
   red,
   grey180
 } from "../../../styles/settings";
@@ -158,4 +160,49 @@ export const InputWrapper = styled.div`
     css`
       width: ${width}%;
     `};
+
+  ~ input {
+    background-color: #ccc;
+  }
+`;
+
+export const WrapperDayPicker = styled.div`
+  .DayPickerInput > input {
+    width: ${rem(60)};
+    height: ${rem(46)};
+    border-radius: ${rem(4)};
+    background-color: ${white};
+    border: solid ${rem(1)} ${grey30};
+    font-size: ${rem(13)};
+    letter-spacing: ${rem(0.1)};
+    color: ${black50};
+    padding: 0 ${rem(52)};
+    transition: 0.3s padding, 0.3s border;
+    box-shadow: none;
+
+    ::-ms-clear {
+      display: none !important;
+    }
+
+    :focus {
+      outline: none;
+      border: solid ${rem(1)} ${darkBlue};
+    }
+  }
+
+  .DayPickerInput-OverlayWrapper {
+    position: absolute;
+    background: ${lightestBlue};
+    left: 166px;
+    top: -30px;
+  }
+
+  .DayPickerInput-Overlay {
+    position: absolute;
+    left: 0;
+    z-index: 999;
+
+    background: ${lightestBlue};
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  }
 `;
