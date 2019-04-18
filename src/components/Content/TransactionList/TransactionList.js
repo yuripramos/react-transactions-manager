@@ -29,9 +29,14 @@ function TransactionList({ transfers }) {
               {e.recipient.name}
               <Hide below="md" />
             </Address>
-            <Arrow> > </Arrow>
+            <Arrow>
+              {" "}
+              <Icon name="To" width="25px" height="25px" />{" "}
+            </Arrow>
             <Address spacing>
-              <Description>R$ {e.ammount}</Description>
+              <Description>
+                {e.dueDate} R$ {e.ammount}
+              </Description>
               <DatesStyle>{`${e.documentType}: ${e.document}`}</DatesStyle>
               <Hide below="md">
                 <DatesStyle>

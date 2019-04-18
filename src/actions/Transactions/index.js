@@ -1,6 +1,7 @@
 import * as SHIPS_API from "../../services/Ships";
 import { unFormatNumber } from "../../utils/formatNumber";
 import { availableBalance } from "../../utils/validations";
+import moment from "moment";
 
 export default () => ({
   AllShips: async (state, n) => {
@@ -17,11 +18,12 @@ export default () => ({
   },
   handleUserInputTranferData: (state, e) => {
     const { name, value } = e.target;
+    const newDate = moment(value).format("l");
     return {
       transferData: {
         ...state.transferData,
         error: null,
-        [name]: value
+        [name]: newDate
       }
     };
   },
@@ -72,9 +74,7 @@ export default () => ({
       documentType: favoredData.documentType,
       favoredName: favoredData.name,
       ammount: unFormatNumber(transferData.value),
-      // dueDate: parseInt(
-      //   moment(transferData.date, "MM-DD-YYYY", "X").format("x")
-      // ),
+      dueDate: transferData.date,
       originAccount: originAccount.number
     };
 

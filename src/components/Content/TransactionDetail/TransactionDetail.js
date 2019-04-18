@@ -53,6 +53,7 @@ class TransactionDetail extends Component {
       createTransfer,
       resetFields
     } = this.props;
+    console.log(transferData.date);
     return (
       <Result large>
         <form noValidate>
@@ -126,7 +127,7 @@ class TransactionDetail extends Component {
                     { name: "cnpj", value: "cnpj" }
                   ]}
                   value={favoredData.documentType}
-                  label={"type of document"}
+                  label="TYPE OF DOCUMENT"
                   tinyLabels
                   width={30}
                 />
@@ -135,7 +136,7 @@ class TransactionDetail extends Component {
                   name="document"
                   onChange={handleUserInputFavoredData}
                   value={favoredData.document}
-                  label="document"
+                  label="DOCUMENT"
                   tinyLabels
                   width={35}
                 />
@@ -152,7 +153,7 @@ class TransactionDetail extends Component {
                   ]}
                   valid={() => checkBank(favoredData.bank)}
                   value={favoredData.bank}
-                  label={"Bank"}
+                  label="BANK"
                   tinyLabels
                   width={50}
                 />

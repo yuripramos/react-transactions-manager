@@ -64,7 +64,7 @@ export const Description = styled.div`
 
 export const Arrow = styled.span`
   position: relative;
-  transform: translate(-15px, 28px);
+  transform: translate(-15px, 50px);
 `;
 
 export const DatesStyle = styled.div`
