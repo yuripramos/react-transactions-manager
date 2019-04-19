@@ -62,6 +62,12 @@ As required in the challenge the focus was in the UI itself and make things work
 **Basically the manual tests made in this project was about the user filling each input, if the user didn't fill the all fields the transaction will not be created.**
 
 
+## AvailableBalance Feature 
+
+1. The money will just counted when you choose the type of transaction `debit` if you choose `credit` instead  the money will not be withdrawn.
+
+2. The application allows negative amount of money.
+
 ## Roadmap
 
 **Release 0.1** (current) - First release of the app
