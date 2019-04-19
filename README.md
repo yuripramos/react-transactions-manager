@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-## Getting Started
+## :octopus: Getting Started
 
 This project was made focusing on the flat architecture for high scalable projects. The App itself is small but is 100% ready to get as big as possible
 
@@ -57,12 +57,12 @@ More about Redux-zero [here](https://medium.com/@matheusml/introducing-redux-zer
 
 ## Tests?
 
-As required in the challenge the focus was in the UI itself and make things work, to make things easier and to avoid unnecessary work wasn't made any kind of unit tests in this project, just a few snapshots tests, but after that, I decided to remove the jest environment.
+As required in the challenge the focus was in the UI itself and the 3 Features, to make things easier and to avoid unnecessary work wasn't made any kind of unit tests in this project, just a few snapshots tests, but after that, I decided to remove the jest environment.
 
-**Basically the manual tests made in this project was about the user filling each input, if the user didn't fill the all fields the transaction will not be created.**
+**Basically, the manual tests made in this project was about the user filling each input if the user didn't fill all fields the transaction will not be created**
 
 
-## AvailableBalance Feature 
+## :pound: AvailableBalance Feature 
 
 1. The money will just counted when you choose the type of transaction `debit` if you choose `credit` instead  the money will not be withdrawn.
 
