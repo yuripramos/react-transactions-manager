@@ -5,11 +5,6 @@ import { withRouter } from "react-router-dom";
 import transactionsActions from "../../actions/Transactions";
 
 export default connect(
-  ({ isFilled, shipsArray, ShowDetails, detailedShip }) => ({
-    isFilled,
-    shipsArray,
-    ShowDetails,
-    detailedShip
-  }),
+  ({ transfers }) => ({ transfers }),
   transactionsActions
 )(withRouter(Header));

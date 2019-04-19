@@ -1,7 +1,6 @@
 import React from "react";
-import { array, func } from "prop-types";
+import { array } from "prop-types";
 import Icon from "../../common/Icon";
-import Hide from "../../common/Hide";
 import {
   Title,
   Item,
@@ -10,13 +9,13 @@ import {
   Address,
   InfoStyle,
   Arrow,
-  Name
+  Name,
+  Empty
 } from "./styles";
 import formatNumber from "../../../utils/formatNumber";
 
 function TransactionList({ transfers }) {
   const isFilled = transfers.length > 0;
-
   return (
     <ListWrapper>
       <Title>Transactions History</Title>
@@ -30,7 +29,6 @@ function TransactionList({ transfers }) {
               <InfoStyle>Origin Acc: {e.originAccount} / {e.typeOfTransaction}</InfoStyle>
               <InfoStyle>Document: {e.recipient.taxId}</InfoStyle>
               <Name>{e.recipient.name}</Name>
-              <Hide below="md" />
             </Address>
             <Arrow>
               {" "}
@@ -40,20 +38,18 @@ function TransactionList({ transfers }) {
               <Description>
                 {e.dueDate} / R$ {e.ammount && formatNumber(e.ammount)}
               </Description>
-                <InfoStyle>
-                  {`Bank: ${e.recipient.bankName} - ${e.recipient.bankBranch} / ${
-                    e.recipient.bankAccount
-                  }`}
-                </InfoStyle>
-              <Hide below="md">
-                  <InfoStyle>{e.documentType.toUpperCase()}{`: ${e.document}`}</InfoStyle>
-              </Hide>
+              <InfoStyle>
+                {`Bank: ${e.recipient.bankName} - ${e.recipient.bankBranch} / ${
+                  e.recipient.bankAccount
+                }`}
+              </InfoStyle>
+              <InfoStyle>{e.documentType.toUpperCase()}{`: ${e.document}`}</InfoStyle>
               <Name>{e.favoredName}</Name>
             </Address>
           </Item>
         ))
       ) : (
-        <div>No Transfers to display</div>
+        <Empty>No Transfers to display</Empty>
       )}
     </ListWrapper>
   );
@@ -62,6 +58,5 @@ function TransactionList({ transfers }) {
 export default TransactionList;
 
 TransactionList.propTypes = {
-  ships: array,
-  getCity: func
+  transfers: array
 };

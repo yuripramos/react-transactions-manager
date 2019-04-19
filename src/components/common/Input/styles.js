@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { rem } from "../../../styles/tools";
+import { media, rem } from "../../../styles/tools";
 
 import {
   white,
@@ -66,8 +66,6 @@ export const Label = styled.label`
 `;
 
 const revealContent = css`
-  /* padding-top: ${rem(3)}; */
-
   ~ ${Label} {
     top: ${rem(22)};
     font-size: ${rem(11)};
@@ -78,8 +76,6 @@ const revealContent = css`
 `;
 
 const revealContent2 = css`
-  /* padding-top: ${rem(3)}; */
-
   ~ ${Label} {
     top: ${rem(10)};
     font-family: Lato Bold;
@@ -91,7 +87,6 @@ const revealContent2 = css`
 `;
 
 const revealContent3 = css`
-  /* padding-top: ${rem(3)}; */
 
   ~ ${Label} {
     top: ${rem(12)};
@@ -194,8 +189,12 @@ export const WrapperDayPicker = styled.div`
   .DayPickerInput-OverlayWrapper {
     position: absolute;
     background: ${lightestBlue};
-    left: 166px;
-    top: -30px;
+    left: 78px;
+    top: -15px;
+    ${media.md(css`
+      left: 166px;
+       top: -30px;
+    `)};
   }
 
   .DayPickerInput-Overlay {

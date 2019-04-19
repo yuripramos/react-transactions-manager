@@ -16,10 +16,7 @@ class Content extends Component {
   }
 
   render() {
-    const {
-      detailedShip,
-      transfers
-    } = this.props;
+    const { transfers } = this.props;
     return (
       <Container>
         <ContentWrapper>
@@ -30,7 +27,6 @@ class Content extends Component {
           </Column>
           <Column width={isResponsive() ? 100 : 65}>
             <TransactionDetail
-              detailedShip={detailedShip}
               innerRef={this.innerRef}
             />
           </Column>

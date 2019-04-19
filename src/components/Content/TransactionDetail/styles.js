@@ -68,7 +68,7 @@ export const Title = styled.h1`
 
 export const Fieldset = styled.div`
   padding: ${rem(14)};
-  margin: ${rem(20)} ${rem(5)};
+  margin: ${rem(12)} ${rem(10)};
   height: ${rem(180)};
   color: ${grey90};
   border: solid ${rem(1)} ${blue30};
@@ -77,6 +77,9 @@ export const Fieldset = styled.div`
   justify-content: space-between;
   display: inline-flex;
   flex-wrap: wrap;
+  ${media.md(css`
+    margin: ${rem(20)} ${rem(5)};
+  `)};
   ${({ width }) =>
     width &&
     css`
@@ -172,7 +175,10 @@ export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: ${rem(20)};
+  padding: ${rem(4)};
+  ${media.md(css`
+    padding: ${rem(20)};
+  `)};
 `;
 
 export const ShowHideWrapper = styled.div`

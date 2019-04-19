@@ -25,7 +25,7 @@ describe("Button component", () => {
     expect(shallow(<Button type="submit">Text</Button>)).toMatchSnapshot();
   });
 
-  it("should render different widths", () => {
+  it("should render different width", () => {
     expect(shallow(<Button width="100">Text</Button>)).toMatchSnapshot();
   });
 });

@@ -17,6 +17,14 @@ export const checkTypeOfDocument = value => {
   }
   return null;
 };
+
+export const checkTypeOfTransaction = value => {
+  if (value) {
+    return value.length > 2;
+  }
+  return null;
+};
+
 export const checkFavored = favored => {
   if (favored) {
     return favored.length > 5;

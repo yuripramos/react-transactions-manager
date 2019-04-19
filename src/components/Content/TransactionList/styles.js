@@ -5,7 +5,6 @@ import {
   grey10,
   black40,
   lighestgrey,
-  trueWhite,
   green
 } from "../../../styles/settings";
 
@@ -32,19 +31,16 @@ export const ListWrapper = styled.div`
   overflow-y: auto;
 `;
 
+export const Empty = styled.div`
+  width: 100%;
+`;
+
 export const Item = styled.div`
   width: 100%;
   padding: ${rem(35)} ${rem(30)};
   border-bottom: solid 1px ${grey10};
   height: ${rem(60)};
-  cursor: pointer;
   display: inline-flex;
-  ${({ isActive }) =>
-    isActive &&
-    css`
-      border-left: solid 1px ${grey10};
-      background: ${trueWhite};
-    `};
 `;
 
 export const Name = styled.div`

@@ -1,21 +1,8 @@
-import * as SHIPS_API from "../../services/Ships";
 import { unFormatNumber } from "../../utils/formatNumber";
 import { availableBalance } from "../../utils/validations";
 import moment from "moment";
 
 export default () => ({
-  AllShips: async (state, n) => {
-    const AllShipsRequest = await SHIPS_API.getAllShips(n);
-    return {
-      isFilled: AllShipsRequest.length > 0,
-      shipsArray: AllShipsRequest
-    };
-  },
-  mockGet: async state => {
-    return {
-      isFilled: state.transfers.length > 0
-    };
-  },
   handleUserInputTranferData: (state, e) => {
     const { name, value } = e.target;
     const newDate = moment(value).format("l");

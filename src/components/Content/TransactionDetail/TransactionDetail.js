@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "../../common/Input";
 import Dropdown from "../../common/Dropdown";
 import { Row } from "../../../styles/grid";
+import { isResponsive } from "../../../utils/getResolution";
 import formatNumber from "../../../utils/formatNumber";
 
 import {
@@ -22,16 +23,19 @@ import {
   checkBank,
   checkAgency,
   checkAccount,
-  checkTypeOfDocument
+  checkTypeOfDocument,
+  checkTypeOfTransaction
 } from "../../../utils/validations";
 
 export const isDisabled = (
   isValidValue,
   isValidBank,
   isValidAgency,
-  isValidAccount
+  isValidAccount,
+  isValidDocument,
+  isValidTypeOfTransaction
 ) => {
-  return !(isValidValue && isValidBank && isValidAgency && isValidAccount);
+  return !(isValidValue && isValidBank && isValidAgency && isValidAccount && isValidDocument && isValidTypeOfTransaction);
 };
 
 class TransactionDetail extends Component {
@@ -97,7 +101,7 @@ class TransactionDetail extends Component {
                     { name: "credit", value: "credit" }
                   ]}
                   value={transferData.typeOfTransaction}
-                  // valid={() => checkTypeOfDocument(favoredData.documentType)}
+                  valid={() => checkTypeOfTransaction(transferData.typeOfTransaction)}
                   label="TYPE OF TRANSACTION"
                   tinyLabels
                   width={42}
@@ -122,7 +126,7 @@ class TransactionDetail extends Component {
               </Row>
             </RowsWrapper>
           </Fieldset>
-          <Fieldset width={98} adjust={-3} withRows>
+          <Fieldset width={isResponsive() ? false : 98} adjust={-3} withRows>
             <TitleWrapper withRows>
               <FieldsetTitle>FAVORED DATA</FieldsetTitle>
             </TitleWrapper>
@@ -209,7 +213,8 @@ class TransactionDetail extends Component {
                 checkBank(favoredData.bank),
                 checkAgency(favoredData.agency),
                 checkAccount(favoredData.account),
-                checkTypeOfDocument(favoredData.documentType)
+                checkTypeOfDocument(favoredData.documentType),
+                checkTypeOfTransaction(transferData.typeOfTransaction)
               )}
               isCallToAction
               onClick={() => {

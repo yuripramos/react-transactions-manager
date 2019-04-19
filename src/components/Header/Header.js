@@ -11,7 +11,7 @@ import TransactionList from "../Content/TransactionList";
 import { rem } from "../../styles/tools";
 import { white, black } from "../../styles/settings";
 
-const bmStyles = {
+const bmStylesClosed = {
   bmBurgerButton: {
     display: "inline-block",
     position: "absolute",
@@ -24,6 +24,20 @@ const bmStyles = {
     left: 0
   }
 };
+
+const bmStylesOpened = {
+    bmBurgerButton: {
+    display: "inline-block",
+    position: "absolute",
+    top: `${rem(20)}`,
+    right: `${rem(15)}`,
+    padding: `${rem(2)}`,
+    cursor: "pointer"
+  },
+  bmMenuWrap: {
+    left: 0
+  }
+}
 
 class Header extends Component {
   constructor(props) {
@@ -44,14 +58,9 @@ class Header extends Component {
   }
 
   render() {
-    const {
-      shipsArray,
-      ShowDetails,
-      detailedShip,
-      isFilled,
-      history
-    } = this.props;
+    const { transfers, history } = this.props;
     const { menuOpen } = this.state;
+    const isFilled = transfers.length > 0;
     return (
       <HeaderWrapper>
         <Container onClick={this.closeMenu}>
@@ -84,14 +93,10 @@ class Header extends Component {
                     <Icon name="Menu" color={black} />
                   )
                 }
-                width="70%"
-                styles={bmStyles}
+                width="90%"
+                styles={menuOpen === true ? bmStylesOpened : bmStylesClosed}
               >
-                <TransactionList
-                  ships={shipsArray}
-                  ShowDetails={ShowDetails}
-                  detailedShip={detailedShip}
-                />
+                <TransactionList transfers={transfers} />
               </Menu>
             )}
             <TitleWrapper>

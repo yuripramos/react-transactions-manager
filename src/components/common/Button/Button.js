@@ -6,7 +6,6 @@ function Button({
   children,
   onClick,
   isCallToAction,
-  isWarning,
   type,
   disabled,
   width,
@@ -14,9 +13,7 @@ function Button({
   small,
   height,
   dataTest,
-  paddingSize,
-  opacity,
-  isNewTransfer
+  opacity
 }) {
   return (
     <ButtonTag
@@ -26,13 +23,10 @@ function Button({
       type={type}
       disabled={disabled}
       isCallToAction={isCallToAction}
-      isWarning={isWarning}
       data-test={dataTest ? dataTest : Button.displayName}
       onClick={onClick}
       small={small}
       opacity={opacity}
-      paddingSize={paddingSize}
-      isNewTransfer={isNewTransfer}
     >
       {children}
     </ButtonTag>
@@ -43,7 +37,6 @@ Button.displayName = "Button";
 
 Button.defaultProps = {
   isCallToAction: null,
-  isWarning: null,
   type: "button",
   disabled: false,
   width: null,
@@ -51,14 +44,11 @@ Button.defaultProps = {
   onClick: null,
   className: null,
   small: false,
-  paddingSize: null,
-  isNewTransfer: null
 };
 
 Button.propTypes = {
   children: node,
   isCallToAction: bool,
-  isWarning: bool,
   disabled: bool,
   type: string,
   width: number,
@@ -66,8 +56,6 @@ Button.propTypes = {
   className: string,
   small: bool,
   height: number,
-  paddingSize: number,
-  isNewTransfer: bool
 };
 
 export default Button;
