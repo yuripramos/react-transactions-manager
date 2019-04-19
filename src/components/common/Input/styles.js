@@ -54,6 +54,7 @@ export const Label = styled.label`
   font-family: Lato;
   font-size: ${rem(13)};
   letter-spacing: ${rem(0.1)};
+  text-align: left;
   color: ${black50};
   ${({ tinyLabels }) =>
     tinyLabels &&

@@ -21,7 +21,7 @@ class Content extends Component {
       <Container>
         <ContentWrapper>
           <Column width={isResponsive() ? 0 : 35}>
-            <Hide below="md">
+            <Hide below="lg">
               <TransactionList transfers={transfers} />
             </Hide>
           </Column>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { string, oneOfType, func, bool, number } from "prop-types";
 import { DropdownWrapper, DropdownField } from "./styles";
 import { Label } from "../../common/Input/styles";
-import Icon from "../../common/Icon";
 
 class Dropdown extends Component {
   constructor(props) {
@@ -69,7 +68,6 @@ class Dropdown extends Component {
           data-test={dataTest ? dataTest : Dropdown.displayName}
           isEmpty={!value}
           tinyLabels={tinyLabels}
-          hasLabel={label}
         >
           {emptyOptionTemplate.concat(list).map((e, i) => (
             <option key={i} value={e.value} defaultValue={e.selected}>
@@ -94,7 +92,6 @@ Dropdown.propTypes = {
   type: string,
   name: string,
   label: string,
-  icon: string,
   tinyLabels: bool,
   value: oneOfType([number, string]),
   valid: oneOfType([bool, func]),

@@ -36,6 +36,10 @@ const bmStylesOpened = {
   },
   bmMenuWrap: {
     left: 0
+  },
+  bmOverlay: {
+    left: 0,
+    top: 0
   }
 }
 
@@ -64,7 +68,7 @@ class Header extends Component {
     return (
       <HeaderWrapper>
         <Container onClick={this.closeMenu}>
-          <Hide below="md">
+          <Hide below="lg">
             <Row>
               <Column>
                 <SidebarMenu currentLocation={history.location.pathname} />
@@ -81,7 +85,7 @@ class Header extends Component {
               </Column>
             </Row>
           </Hide>
-          <Hide above="md">
+          <Hide above="lg">
             {isFilled && (
               <Menu
                 isOpen={menuOpen}
@@ -100,7 +104,7 @@ class Header extends Component {
               </Menu>
             )}
             <TitleWrapper>
-              <img src={Logo} alt="logo loadsmart" width="50px" height="50px" />
+              <img src={Logo} alt="logo" width="50px" height="50px" />
             </TitleWrapper>
           </Hide>
         </Container>

@@ -40,33 +40,6 @@ describe("Dropdown component", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should match snapshot with prop valid as func", () => {
-    const wrapper = shallow(<Dropdown accountNumber={true} {...props} />);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it("should match snapshot with emptyState", () => {
-    const wrapper = shallow(<Dropdown accountNumber={true} {...props} />);
-    wrapper.setState({ emptyState: true });
-    wrapper.update();
-
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it("should match snapshot with data-test attribute", () => {
-    const props = {
-      onChange: () => {},
-      name: "dropdown",
-      placeholder: "Dropdown",
-      valid: false,
-      list: [{ name: "one" }, { name: "two" }],
-      value: "",
-      dataTest: "dropdown"
-    };
-
-    const wrapper = shallow(<Dropdown accountNumber={true} {...props} />);
-    expect(wrapper).toMatchSnapshot();
-  });
 
   it("should match snapshot with no prop valid", () => {
     const props = {

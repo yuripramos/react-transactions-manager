@@ -17,7 +17,7 @@ class App extends Component {
           <ThemeProvider
             theme={{
               space: [0, rem(5), rem(10), rem(15), rem(20)],
-              breakpoints: [rem(767), rem(992), rem(1279)]
+              breakpoints: [rem(767), rem(992), rem(1179)]
             }}
           >
           <div className="App">

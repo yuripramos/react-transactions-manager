@@ -194,7 +194,7 @@ class TransactionDetail extends Component {
                 />
                 <Input
                   onChange={handleUserInputFavoredData}
-                  maxLength="11"
+                  maxLength="10"
                   type="text"
                   name="account"
                   valid={() => checkAccount(favoredData.account)}

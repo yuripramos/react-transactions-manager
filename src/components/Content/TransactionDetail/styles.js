@@ -13,14 +13,17 @@ import { default as ButtonRaw } from "../../common/Button";
 
 export const Result = styled.div`
   width: 100%;
+  overflow-x: hidden;
   margin: 0 auto;
   padding: 0;
-  text-align: left;
+  text-align: center;
   height: ${rem(40)};
   transition: all 0.2s linear;
-  overflow: hidden;
   ${media.md(css`
     padding: 0 ${rem(60)};
+  `)};
+  ${media.lg(css`
+    text-align: left;
   `)};
   ${({ large }) =>
     large &&

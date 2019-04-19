@@ -1,6 +1,6 @@
-import { SCREEN_MD } from "./constants";
+import { SCREEN_LG } from "./constants";
 export function isResponsive() {
-  if (window.screen.availWidth < SCREEN_MD) {
+  if (window.screen.availWidth < SCREEN_LG) {
     return true;
   }
 }

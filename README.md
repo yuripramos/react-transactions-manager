@@ -1,4 +1,4 @@
-# React-Track-Shipping
+# React-transactions-manager
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
@@ -9,6 +9,8 @@ This project was made focusing on the flat architecture for high scalable projec
 :heavy_check_mark: Styled-Components
 
 :heavy_check_mark: Dynamic Routes
+
+:heavy_check_mark: LocalStorage to save your recent transactions even when the browser is closed
 
 :heavy_check_mark: Responsive SPA (Minimum resolution: 450px)
 
@@ -41,13 +43,32 @@ access http://localhost:3000/dashboard
 
 **Requires node >= 8.9.3**
 
+## Why Redux-zero as a state manager?
+
+[Redux-zero](https://github.com/redux-zero/redux-zero) is a lightweight state container based on Redux.
+I would like to share 3 arguments to choose redux-zero over redux.
+
+1. Is lighter(less than 1kb) than redux and in projects that are not necessarily high usage of reducers, it helps to focus on what is important.
+2. I participated in the conception of this lib, made mostly by an ex-coworker.
+3. I'm currently focusing my career in leadership and share knowledge that I've learned across these years, so would be
+   an honor gives a presentation about this amazing library.
+
+More about Redux-zero [here](https://medium.com/@matheusml/introducing-redux-zero-bea42214c7ee)
+
+## Tests?
+
+As required in the challenge the focus was in the UI itself and make things work, to make things easier and to avoid unnecessary work wasn't made any kind of unit tests in this project, just a few snapshots tests, but after that, I decided to remove the jest environment.
+
+**Basically the manual tests made in this project was about the user filling each input, if the user didn't fill the all fields the transaction will not be created.**
+
+
 ## Roadmap
 
 **Release 0.1** (current) - First release of the app
 
-**Release 0.2** - Unit and e2e tests
+**Release 0.2** - Unit, e2e tests and more accurate validation according project Definition of Done
 
-**Release 0.3** - Improvements in mobile devices screens
+**Release 0.3** - Improvements in responsiveness
 
 **Release 0.4** - Improvements in UX and transistions
 
@@ -58,3 +79,7 @@ Yuri Ramos
 ## :scroll: License
 
 MIT
+
+##Contributing 
+
+Want to help? Submit a PR named `Feat/MyFeature` or `Fix/MyFix`, and create a DECISIONS.MD explaining your technical solutions

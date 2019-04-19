@@ -1,4 +1,4 @@
-export const SCREEN_LG = 1279;
+export const SCREEN_LG = 1179;
 export const SCREEN_MD = 992;
 export const SCREEN_SM = 767;
 export const SCREEN_XS = 449;

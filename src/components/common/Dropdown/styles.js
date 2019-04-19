@@ -5,7 +5,6 @@ import {
   grey30,
   black50,
   darkBlue,
-  green,
   red
 } from "../../../styles/settings";
 import { Label } from "../../common/Input/styles";
@@ -20,10 +19,12 @@ export const DropdownField = styled.select`
   font-size: ${rem(13)};
   letter-spacing: ${rem(0.8)};
   color: ${black50};
-  padding: ${rem(15)} ${rem(55)} 0 ${rem(6.4)};
+  padding: ${rem(15)} ${rem(15)} 0 ${rem(6.4)};
   transition: 0.3s padding, 0.3s border;
   box-shadow: none;
-
+  ${media.lg(css`
+    padding: ${rem(15)} ${rem(55)} 0 ${rem(6.4)};
+  `)};
   ::-ms-clear {
     display: none !important;
   }
@@ -38,14 +39,6 @@ export const DropdownField = styled.select`
     ${({ tinyLabels, isEmpty }) => tinyLabels && !isEmpty && revealContent3};
   }
 
-  ${({ hasLabel }) =>
-    !hasLabel &&
-    css`
-      height: auto;
-      padding: ${rem(8)} 0 ${rem(8)} ${rem(15)};
-      border-radius: ${rem(20)};
-      appearance: none;
-    `};
 `;
 
 export const DropdownWrapper = styled.div`
@@ -87,16 +80,3 @@ const revealContent3 = css`
   }
 `;
 
-export const IconContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: ${rem(55)};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(-50%);
-  color: ${black50};
-  transition: 0.3s color;
-  pointer-events: none;
-`;
