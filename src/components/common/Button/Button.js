@@ -16,7 +16,6 @@ function Button({
   dataTest,
   paddingSize,
   opacity,
-  approveButton,
   isNewTransfer
 }) {
   return (
@@ -24,7 +23,6 @@ function Button({
       className={className}
       width={width}
       height={height}
-      approveButton={approveButton}
       type={type}
       disabled={disabled}
       isCallToAction={isCallToAction}

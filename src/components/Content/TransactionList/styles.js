@@ -37,8 +37,10 @@ export const Item = styled.div`
     `};
 `;
 
-export const City = styled.span`
-  font-weight: 700;
+export const Name = styled.div`
+  width: 100%;
+  text-align: left;
+  text-transform: capitalize;
 `;
 
 export const Description = styled.div`
@@ -67,11 +69,11 @@ export const Arrow = styled.span`
   transform: translate(-15px, 50px);
 `;
 
-export const DatesStyle = styled.div`
+export const InfoStyle = styled.div`
   font-size: ${rem(11)};
   width: 100%;
   display: inline-flex;
-  color: ${grey10};
+  color: ${black};
   padding: ${rem(5)} 0;
   font-weight: 300;
 `;

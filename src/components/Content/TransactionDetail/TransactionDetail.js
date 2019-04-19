@@ -127,6 +127,7 @@ class TransactionDetail extends Component {
                     { name: "cnpj", value: "cnpj" }
                   ]}
                   value={favoredData.documentType}
+                  valid={() => checkTypeOfDocument(favoredData.documentType)}
                   label="TYPE OF DOCUMENT"
                   tinyLabels
                   width={30}

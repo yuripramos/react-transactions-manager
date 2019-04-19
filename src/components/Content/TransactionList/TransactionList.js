@@ -1,21 +1,21 @@
 import React from "react";
 import { array, func } from "prop-types";
 import Icon from "../../common/Icon";
-import moment from "moment-timezone";
-import formatNumber from "../../../utils/formatNumber";
 import Hide from "../../common/Hide";
 import {
   Item,
   ListWrapper,
   Description,
   Address,
-  DatesStyle,
+  InfoStyle,
   Arrow,
-  City
+  Name
 } from "./styles";
+import formatNumber from "../../../utils/formatNumber";
 
 function TransactionList({ transfers }) {
   const isFilled = transfers.length > 0;
+
   return (
     <ListWrapper>
       {isFilled ? (
@@ -24,9 +24,9 @@ function TransactionList({ transfers }) {
             <Address>
               <Description recipient>
                 <Icon name="Transactions" />
-                <DatesStyle>{e.recipient.taxId}</DatesStyle>
+                <InfoStyle>{e.recipient.taxId}</InfoStyle>
               </Description>
-              {e.recipient.name}
+              <Name>{e.recipient.name}</Name>
               <Hide below="md" />
             </Address>
             <Arrow>
@@ -35,17 +35,17 @@ function TransactionList({ transfers }) {
             </Arrow>
             <Address spacing>
               <Description>
-                {e.dueDate} R$ {e.ammount}
+                {e.dueDate} - R$ {e.ammount && formatNumber(e.ammount)}
               </Description>
-              <DatesStyle>{`${e.documentType}: ${e.document}`}</DatesStyle>
+              <InfoStyle>{e.documentType.toUpperCase()}{`: ${e.document}`}</InfoStyle>
               <Hide below="md">
-                <DatesStyle>
-                  {` ${e.recipient.bankName} ${e.recipient.bankBranch}/ ${
+                <InfoStyle>
+                  {`Bank: ${e.recipient.bankName} - ${e.recipient.bankBranch}/ ${
                     e.recipient.bankAccount
                   }`}
-                </DatesStyle>
+                </InfoStyle>
               </Hide>
-              {e.favoredName}
+              <Name>{e.favoredName}</Name>
             </Address>
           </Item>
         ))

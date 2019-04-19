@@ -17,11 +17,8 @@ class Content extends Component {
 
   render() {
     const {
-      shipsArray,
-      ShowDetails,
       detailedShip,
-      transfers,
-      isFilled
+      transfers
     } = this.props;
     return (
       <Container>

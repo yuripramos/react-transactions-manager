@@ -31,6 +31,7 @@ export const checkBank = bank => {
   return null;
 };
 
+
 export const checkAgency = agency => {
   if (agency) {
     return agency.length > 2;

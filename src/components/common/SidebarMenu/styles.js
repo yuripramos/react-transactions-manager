@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { rem, media } from "../../../styles/tools";
-import { white, grey30 } from "../../../styles/settings";
+import { white, trueWhite } from "../../../styles/settings";
 import Icon from "../Icon";
 
 export const MenuList = styled.ul`
@@ -20,7 +20,7 @@ export const ListItem = styled.li`
   height: ${rem(65)};
   font-family: Lato;
   font-size: ${rem(20)};
-  color: ${grey30};
+  color: ${trueWhite};
   letter-spacing: ${rem(1)};
   padding-top: ${rem(20)};
   margin: 0 ${rem(25)} 0 ${rem(70)};
@@ -93,7 +93,7 @@ export const Span = styled.span`
 export const ListMenuItems = styled.div`
   margin: 0 auto;
   font-weight: 500;
-  color: ${grey30};
+  color: ${trueWhite};
   margin-top: ${rem(15)};
   display: flex;
   flex-flow: row wrap;

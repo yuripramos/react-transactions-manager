@@ -25,19 +25,19 @@ class SidebarMenu extends Component {
       <ListMenuItems>
         <Item
         >
-          <Span>SHIPPER</Span>
+          <Span>TRANSACTIONS</Span>
         </Item>
         <Item
         >
-          <Span>BECOME A CARRIER</Span>
+          <Span>ABOUT US</Span>
+        </Item>
+        <Item
+        >
+          <Span>OUR VISION</Span>
         </Item>
         <Item
         >
           <Span>LOGIN</Span>
-        </Item>
-        <Item
-        >
-          <Span>SIGN UP</Span>
         </Item>
       </ListMenuItems>
     );

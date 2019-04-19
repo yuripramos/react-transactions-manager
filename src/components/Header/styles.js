@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 import { rem, media } from "../../styles/tools";
-import { white, green30 } from "../../styles/settings";
+import { white, green } from "../../styles/settings";
 
 export const HeaderWrapper = styled.header`
   height: ${rem(58)};
   padding-top: ${rem(10)};
-  background: ${green30};
+  background: ${green};
   text-align: center;
   ${media.md(css`
     text-align: center;

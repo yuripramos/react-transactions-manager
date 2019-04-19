@@ -6,7 +6,7 @@ const commonState = {
     surName: "Ramos",
     document: "11111111"
   },
-  transfers: [],
+  transfers: JSON.parse(localStorage.getItem("transfers")) || [],
   favoredData: {},
   transferData: {}
 };

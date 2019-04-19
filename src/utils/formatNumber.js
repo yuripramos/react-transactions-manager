@@ -10,7 +10,7 @@ export default function formatNumber(value, numberOptions = {}) {
     options.maximumFractionDigits = numberOptions.digits;
   }
 
-  return new Intl.NumberFormat("en-US", options).format(value);
+  return new Intl.NumberFormat("pt-BR", options).format(value);
 }
 
 export function unFormatNumber(value) {

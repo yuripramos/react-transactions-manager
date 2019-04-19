@@ -1,4 +1,3 @@
-// import React from "react";
 import styled, { css } from "styled-components";
 import { rem, media } from "../../styles/tools";
 import { lightBlue, green, white, grey, darkBlue } from "../../styles/settings";
@@ -49,13 +48,6 @@ export const ButtonTag = styled.button`
     padding: ${props => props.paddingSize && rem(props.paddingSize)};
   `)};
 
-  ${({ approveButton }) =>
-    approveButton &&
-    css`
-      font-size: ${rem(10)} !important;
-      line-height: ${rem(15)} !important;
-      margin: -5px 0px 0px -25px;
-    `};
 
   :active {
     transform: translateY(${rem(1)});

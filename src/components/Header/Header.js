@@ -64,9 +64,9 @@ class Header extends Component {
                 <TitleWrapper>
                   <img
                     src={Logo}
-                    alt="logo loadsmart"
-                    width="50px"
-                    height="50px"
+                    alt="logo financial"
+                    width="44px"
+                    height="44px"
                   />
                 </TitleWrapper>
               </Column>

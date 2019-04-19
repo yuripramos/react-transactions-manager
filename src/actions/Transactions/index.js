@@ -79,6 +79,7 @@ export default () => ({
     };
 
     const transfers = [...state.transfers, body];
+    localStorage.setItem("transfers", JSON.stringify(transfers));
 
     return {
       transfers: transfers,
