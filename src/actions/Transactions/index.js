@@ -33,13 +33,16 @@ export default () => ({
       value
     }
   }),
-  handleUserInputTranferDataDate: (state, from) => ({
-    transferData: {
-      ...state.transferData,
-      error: null,
-      date: from
-    }
-  }),
+  handleUserInputTranferDataType: (state, e) => {
+    const { name, value } = e.target;
+    return {
+      transferData: {
+        ...state.transferData,
+        error: null,
+        [name]: value
+      }
+    };
+  },
   handleUserInputFavoredData: (state, e) => {
     const { name, value } = e.target;
     return {
@@ -75,17 +78,19 @@ export default () => ({
       favoredName: favoredData.name,
       ammount: unFormatNumber(transferData.value),
       dueDate: transferData.date,
+      typeOfTransaction: transferData.typeOfTransaction,
       originAccount: originAccount.number
     };
 
-    const transfers = [...state.transfers, body];
+    const transfers = [body,...state.transfers];
     localStorage.setItem("transfers", JSON.stringify(transfers));
-
+    const { typeOfTransaction } = transferData;
     return {
       transfers: transfers,
       originAccount: {
         ...state.originAccount,
-        availableBalance: availableBalance(originAccount, transferData)
+        availableBalance: typeOfTransaction === "debit" ? availableBalance(originAccount, transferData)
+        : state.originAccount.availableBalance
       }
     };
   },

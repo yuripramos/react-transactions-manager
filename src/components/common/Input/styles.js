@@ -167,16 +167,17 @@ export const InputWrapper = styled.div`
 `;
 
 export const WrapperDayPicker = styled.div`
+  margin-right: ${rem(10)};
   .DayPickerInput > input {
     width: ${rem(60)};
     height: ${rem(46)};
     border-radius: ${rem(4)};
     background-color: ${white};
     border: solid ${rem(1)} ${grey30};
-    font-size: ${rem(13)};
+    font-size: ${rem(11)};
     letter-spacing: ${rem(0.1)};
     color: ${black50};
-    padding: 0 ${rem(52)};
+    padding: 0 ${rem(20)};
     transition: 0.3s padding, 0.3s border;
     box-shadow: none;
 

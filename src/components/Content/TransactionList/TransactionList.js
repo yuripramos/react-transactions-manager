@@ -3,6 +3,7 @@ import { array, func } from "prop-types";
 import Icon from "../../common/Icon";
 import Hide from "../../common/Hide";
 import {
+  Title,
   Item,
   ListWrapper,
   Description,
@@ -18,14 +19,16 @@ function TransactionList({ transfers }) {
 
   return (
     <ListWrapper>
+      <Title>Transactions History</Title>
       {isFilled ? (
         transfers.map((e, i) => (
           <Item key={i}>
             <Address>
               <Description recipient>
                 <Icon name="Transactions" />
-                <InfoStyle>{e.recipient.taxId}</InfoStyle>
               </Description>
+              <InfoStyle>Origin Acc: {e.originAccount} / {e.typeOfTransaction}</InfoStyle>
+              <InfoStyle>Document: {e.recipient.taxId}</InfoStyle>
               <Name>{e.recipient.name}</Name>
               <Hide below="md" />
             </Address>
@@ -35,22 +38,22 @@ function TransactionList({ transfers }) {
             </Arrow>
             <Address spacing>
               <Description>
-                {e.dueDate} - R$ {e.ammount && formatNumber(e.ammount)}
+                {e.dueDate} / R$ {e.ammount && formatNumber(e.ammount)}
               </Description>
-              <InfoStyle>{e.documentType.toUpperCase()}{`: ${e.document}`}</InfoStyle>
-              <Hide below="md">
                 <InfoStyle>
-                  {`Bank: ${e.recipient.bankName} - ${e.recipient.bankBranch}/ ${
+                  {`Bank: ${e.recipient.bankName} - ${e.recipient.bankBranch} / ${
                     e.recipient.bankAccount
                   }`}
                 </InfoStyle>
+              <Hide below="md">
+                  <InfoStyle>{e.documentType.toUpperCase()}{`: ${e.document}`}</InfoStyle>
               </Hide>
               <Name>{e.favoredName}</Name>
             </Address>
           </Item>
         ))
       ) : (
-        <div>No Transfers made from now</div>
+        <div>No Transfers to display</div>
       )}
     </ListWrapper>
   );

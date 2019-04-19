@@ -36,7 +36,6 @@ const addThousandSeparator = (number, thousandsSeparator) => {
 };
 
 export const toCurrency = (value, thousandsSeparator, centsSeparator) => {
-  console.log("value", value);
   if (value) {
     const digits = getDigitsFromValue(value);
     const digitsWithPadding = padDigits(digits);

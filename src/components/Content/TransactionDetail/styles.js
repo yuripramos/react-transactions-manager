@@ -5,7 +5,8 @@ import {
   darkGreen,
   grey90,
   blue30,
-  grey180
+  grey180,
+  red
 } from "../../../styles/settings";
 import { InputWrapper, InputField } from "../../common/Input/styles";
 import { default as ButtonRaw } from "../../common/Button";
@@ -40,7 +41,12 @@ export const DashboardWrapper = styled.div`
 export const Currency = styled.span`
   color: ${grey180};
   margin: ${rem(4.5)} 0 0 0;
-  font-size: ${rem(12)};
+  font-size: ${rem(20)};
+    ${({ inDebt }) =>
+    inDebt &&
+    css`
+      color: ${red}
+    `};
 `;
 
 export const Button = styled(ButtonRaw)`
@@ -111,7 +117,6 @@ export const FieldsetTitle = styled.span`
   font-weight: bold;
   text-transform: uppercase;
   font-family: Lato;
-  margin-bottom: ${rem(15)};
 `;
 
 export const TitleWrapper = styled.div`

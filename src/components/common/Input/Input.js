@@ -17,11 +17,6 @@ import {
 } from "./styles";
 import Icon from "../Icon";
 
-export const KEYCODES = {
-  ENTER: 13,
-  BACKSPACE: 8,
-  ALL: "all"
-};
 
 class Input extends Component {
   constructor(props) {
@@ -33,8 +28,8 @@ class Input extends Component {
       selectedDay: undefined,
       isDisabled: false
     };
-    this.onKeyDown = this._onKeyDown.bind(this);
     this.handleDayChange = this.handleDayChange.bind(this);
+    this.clearDayPicker = this.clearDayPicker.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -56,24 +51,6 @@ class Input extends Component {
     }
   }
 
-  _onKeyDown(event) {
-    const { disableKeys, onKeyDown } = this.props;
-
-    const disableKeysArray = Array.isArray(disableKeys)
-      ? disableKeys
-      : [disableKeys];
-
-    const disabledKey = disableKeysArray.find(
-      disableKey => event.keyCode == disableKey || event.which == disableKey
-    );
-
-    if (disableKeysArray.includes(KEYCODES.ALL) || disabledKey) {
-      event.preventDefault();
-      return;
-    }
-    onKeyDown && onKeyDown(event);
-  }
-
   handleDayChange(selectedDay, modifiers, dayPickerInput) {
     const input = dayPickerInput.getInput();
     this.setState({
@@ -89,6 +66,14 @@ class Input extends Component {
       }
     };
     this.props.onChange(syntheticEvent);
+
+  }
+  clearDayPicker(){
+    if(this.state.selectedDay !== undefined){
+      this.setState({
+        selectedDay: undefined
+      });
+    }
   }
 
   render() {
@@ -118,9 +103,11 @@ class Input extends Component {
       isFocused,
       emptyState,
       isValid,
-      selectedDay,
-      isDisabled
+      selectedDay
     } = this.state;
+    if(value === "" && type === "date"){
+      this.clearDayPicker();
+    }
     if (type === "date") {
       return (
         <WrapperDayPicker>

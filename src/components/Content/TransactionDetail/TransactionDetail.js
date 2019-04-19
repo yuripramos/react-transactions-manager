@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { isResponsive } from "../../../utils/getResolution";
 import Input from "../../common/Input";
 import Dropdown from "../../common/Dropdown";
 import { Row } from "../../../styles/grid";
+import formatNumber from "../../../utils/formatNumber";
 
 import {
   Fieldset,
@@ -47,13 +47,13 @@ class TransactionDetail extends Component {
       handleUserInputTranferData,
       handleUserInputFavoredData,
       handleUserInputTransferCurrency,
+      handleUserInputTranferDataType,
       transferData,
       favoredData,
       originAccount,
       createTransfer,
       resetFields
     } = this.props;
-    console.log(transferData.date);
     return (
       <Result large>
         <form noValidate>
@@ -67,41 +67,60 @@ class TransactionDetail extends Component {
                 <FieldsetTitle>AVAILABLE BALANCE</FieldsetTitle>
               </TitleWrapper>
               <FloatingText>
-                <Currency>
-                  R$&nbsp;&nbsp;{originAccount.availableBalance}
+                <Currency inDebt={originAccount.availableBalance < 0}>
+                  R$&nbsp;&nbsp;{formatNumber(originAccount.availableBalance)}
                 </Currency>
               </FloatingText>
             </AvailableBalBox>
           </Fieldset>
-          <Fieldset width={30} adjust={-4}>
+          <Fieldset width={50} adjust={-4}>
             <TitleWrapper bigMargin>
               <FieldsetTitle>TRANSFER DATA</FieldsetTitle>
             </TitleWrapper>
-            <Input
-              onChange={handleUserInputTranferData}
-              type="date"
-              name="date"
-              value={transferData.date}
-              label={"DATE"}
-              maxLength={11}
-              width={72}
-              tinyLabels
-            />
-            <Input
-              onChange={e => {
-                const valueAsCurrency = toCurrency(e.target.value, ".", ",");
-                handleUserInputTransferCurrency(valueAsCurrency);
-              }}
-              type="text"
-              name="value"
-              valid={() => checkValue(transferData.value)}
-              prefix={"R$"}
-              width={61}
-              maxLength={14}
-              value={transferData.value}
-              label="VALUE"
-              tinyLabels
-            />
+            <RowsWrapper>
+              <Row>
+                <Input
+                  onChange={handleUserInputTranferData}
+                  type="date"
+                  name="date"
+                  value={transferData.date}
+                  label={"DATE"}
+                  maxLength={11}
+                  width={72}
+                  tinyLabels
+                />
+                <Dropdown
+                  onChange={handleUserInputTranferDataType}
+                  name="typeOfTransaction"
+                  list={[
+                    { name: "debit", value: "debit" },
+                    { name: "credit", value: "credit" }
+                  ]}
+                  value={transferData.typeOfTransaction}
+                  // valid={() => checkTypeOfDocument(favoredData.documentType)}
+                  label="TYPE OF TRANSACTION"
+                  tinyLabels
+                  width={42}
+                />
+              </Row>
+              <Row>
+                <Input
+                  onChange={e => {
+                    const valueAsCurrency = toCurrency(e.target.value, ".", ",");
+                    handleUserInputTransferCurrency(valueAsCurrency);
+                  }}
+                  type="text"
+                  name="value"
+                  valid={() => checkValue(transferData.value)}
+                  prefix={"R$"}
+                  width={62}
+                  maxLength={14}
+                  value={transferData.value}
+                  label="VALUE"
+                  tinyLabels
+                  />
+              </Row>
+            </RowsWrapper>
           </Fieldset>
           <Fieldset width={98} adjust={-3} withRows>
             <TitleWrapper withRows>
@@ -110,7 +129,7 @@ class TransactionDetail extends Component {
             <RowsWrapper>
               <Row>
                 <Input
-                  maxLength="45"
+                  maxLength="35"
                   type="text"
                   name="name"
                   onChange={handleUserInputFavoredData}
@@ -156,7 +175,7 @@ class TransactionDetail extends Component {
                   value={favoredData.bank}
                   label="BANK"
                   tinyLabels
-                  width={50}
+                  width={70}
                 />
                 <Input
                   onChange={handleUserInputFavoredData}
@@ -167,7 +186,7 @@ class TransactionDetail extends Component {
                   valid={() => checkAgency(favoredData.agency)}
                   label={"AGENCY"}
                   tinyLabels
-                  width={15}
+                  width={12}
                 />
                 <Input
                   onChange={handleUserInputFavoredData}
@@ -178,20 +197,20 @@ class TransactionDetail extends Component {
                   value={favoredData.account}
                   label={"ACCOUNT"}
                   tinyLabels
-                  width={25}
+                  width={18}
                 />
               </Row>
             </RowsWrapper>
           </Fieldset>
           <ButtonWrapper>
             <Button
-              // disabled={isDisabled(
-              //   checkValue(transferData.value),
-              //   checkBank(favoredData.bank),
-              //   checkAgency(favoredData.agency),
-              //   checkAccount(favoredData.account),
-              //   checkTypeOfDocument(favoredData.documentType)
-              // )}
+              disabled={isDisabled(
+                checkValue(transferData.value),
+                checkBank(favoredData.bank),
+                checkAgency(favoredData.agency),
+                checkAccount(favoredData.account),
+                checkTypeOfDocument(favoredData.documentType)
+              )}
               isCallToAction
               onClick={() => {
                 createTransfer(favoredData, transferData, originAccount);

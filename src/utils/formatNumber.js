@@ -16,7 +16,6 @@ export default function formatNumber(value, numberOptions = {}) {
 export function unFormatNumber(value) {
   value = value.toString();
 
-  // value = value.replace(/,/g, "");
   value = value.replace(/\./g, "");
   value = value.replace(/,/g, ".");
 

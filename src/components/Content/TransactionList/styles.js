@@ -5,15 +5,25 @@ import {
   grey10,
   black40,
   lighestgrey,
-  trueWhite
+  trueWhite,
+  green
 } from "../../../styles/settings";
+
+export const Title = styled.span`
+  font-size: ${rem(16)};
+  color: ${green};
+  text-align: center;
+  font-weight: 700;
+  width: 100%;
+  padding: ${rem(10)};
+`;
 
 export const ListWrapper = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   background: ${lighestgrey};
   color: ${black};
-  height: 100%;
+  height: 92.4vh;
   min-width: ${rem(300)};
   ${media.lg(css`
     min-width: ${rem(436)};
@@ -38,9 +48,15 @@ export const Item = styled.div`
 `;
 
 export const Name = styled.div`
-  width: 100%;
+  width: ${rem(165)};
   text-align: left;
   text-transform: capitalize;
+  text-overflow: ellipsis;
+  font-size: ${rem(15)};
+
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const Description = styled.div`
@@ -55,9 +71,7 @@ export const Description = styled.div`
   ${({ recipient }) =>
     recipient &&
     css`
-      margin-top: ${rem(20)};
       color: ${black40};
-      height: ${rem(55)};
       font-size: ${rem(12)};
       font-weight: 400;
       justify-content: flex-start;
@@ -76,11 +90,14 @@ export const InfoStyle = styled.div`
   color: ${black};
   padding: ${rem(5)} 0;
   font-weight: 300;
+  height: ${rem(15)};
 `;
 export const Address = styled.div`
   width: 50%;
   display: inline-flex;
   flex-wrap: wrap;
+  margin-top: ${rem(-15)};
+
   ${({ spacing }) =>
     spacing &&
     css`
