@@ -88,7 +88,7 @@ export const InfoStyle = styled.div`
   font-weight: 300;
   height: ${rem(15)};
 `;
-export const Address = styled.div`
+export const AccInfo = styled.div`
   width: 50%;
   display: inline-flex;
   flex-wrap: wrap;

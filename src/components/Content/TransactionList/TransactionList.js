@@ -1,12 +1,12 @@
 import React from "react";
-import { array } from "prop-types";
+import { arrayOf, object } from "prop-types";
 import Icon from "../../common/Icon";
 import {
   Title,
   Item,
   ListWrapper,
   Description,
-  Address,
+  AccInfo,
   InfoStyle,
   Arrow,
   Name,
@@ -22,19 +22,19 @@ function TransactionList({ transfers }) {
       {isFilled ? (
         transfers.map((e, i) => (
           <Item key={i}>
-            <Address>
+            <AccInfo>
               <Description recipient>
                 <Icon name="Transactions" />
               </Description>
               <InfoStyle>Origin Acc: {e.originAccount} / {e.typeOfTransaction}</InfoStyle>
               <InfoStyle>Document: {e.recipient.taxId}</InfoStyle>
               <Name>{e.recipient.name}</Name>
-            </Address>
+            </AccInfo>
             <Arrow>
               {" "}
               <Icon name="To" width="25px" height="25px" />{" "}
             </Arrow>
-            <Address spacing>
+            <AccInfo spacing="true">
               <Description>
                 {e.dueDate} / R$ {e.ammount && formatNumber(e.ammount)}
               </Description>
@@ -45,7 +45,7 @@ function TransactionList({ transfers }) {
               </InfoStyle>
               <InfoStyle>{e.documentType.toUpperCase()}{`: ${e.document}`}</InfoStyle>
               <Name>{e.favoredName}</Name>
-            </Address>
+            </AccInfo>
           </Item>
         ))
       ) : (
@@ -58,5 +58,5 @@ function TransactionList({ transfers }) {
 export default TransactionList;
 
 TransactionList.propTypes = {
-  transfers: array
+  transfers: arrayOf(object),
 };

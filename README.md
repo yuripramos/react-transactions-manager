@@ -64,7 +64,7 @@ As required in the challenge the focus was in the UI itself and the 3 Features, 
 
 ## :pound: AvailableBalance Feature 
 
-1. The money will just counted when you choose the type of transaction `debit` if you choose `credit` instead  the money will not be withdrawn.
+1. The money will just be counted when you choose the type of transaction `debit` if you choose `credit` instead  the money will not be withdrawn.
 
 2. The application allows negative amount of money.
 
@@ -74,7 +74,7 @@ As required in the challenge the focus was in the UI itself and the 3 Features, 
 
 **Release 0.2** - Unit, e2e tests and more accurate validation according project Definition of Done
 
-**Release 0.3** - Improvements in responsiveness
+**Release 0.3** - Improvements in mobile devices resolutions
 
 **Release 0.4** - Improvements in UX and transistions
 
@@ -86,6 +86,6 @@ Yuri Ramos
 
 MIT
 
-##Contributing 
+## Contributing 
 
-Want to help? Submit a PR named `Feat/MyFeature` or `Fix/MyFix`, and create a DECISIONS.MD explaining your technical solutions
+Want to help? Submit a PR named `Feat/MyFeature` or `Fix/MyFix`, and create DECISIONS.MD explaining your technical solutions

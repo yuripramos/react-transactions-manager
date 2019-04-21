@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Input from "../../common/Input";
 import Dropdown from "../../common/Dropdown";
+import { func, object } from "prop-types";
 import { Row } from "../../../styles/grid";
 import { isResponsive } from "../../../utils/getResolution";
 import formatNumber from "../../../utils/formatNumber";
@@ -232,3 +233,15 @@ class TransactionDetail extends Component {
 }
 
 export default TransactionDetail;
+
+TransactionDetail.propTypes = {
+  handleUserInputTranferData: func,
+  handleUserInputFavoredData: func,
+  handleUserInputTransferCurrency: func,
+  handleUserInputTranferDataType: func,
+  transferData: object,
+  originAccount: object,
+  createTransfer: func,
+  resetFields: func,
+
+};

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Container } from "../../styles/grid";
 import TransactionList from "./TransactionList";
-import { arrayOf, bool, object, func } from "prop-types";
+import { arrayOf, object } from "prop-types";
 import TransactionDetail from "./TransactionDetail";
 import Hide from "../common/Hide";
 import { isResponsive } from "../../utils/getResolution";
@@ -39,9 +39,7 @@ class Content extends Component {
 Content.defaultProps = {};
 
 Content.propTypes = {
-  shipsArray: arrayOf(object),
-  isFilled: bool,
-  ShowDetails: func
+  transfers: arrayOf(object),
 };
 
 export default Content;
