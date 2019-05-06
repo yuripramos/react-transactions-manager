@@ -50,6 +50,19 @@ export default () => ({
       }
     };
   },
+  totalBalance: (state, e) => {
+    const { transfers } = state;
+    const newBalance = transfers.reduce((acc, val) => {
+      return val.typeOfTransaction === "credit" ? acc + parseFloat(val.ammount) : acc - parseFloat(val.ammount);
+    }, 0);
+
+    return {
+      originAccount: {
+        ...state.originAccount,
+        availableBalance: newBalance
+      }
+    }
+  },
   createTransfer: async (state, favoredData, transferData, originAccount) => {
     const body = {
       recipient: {
@@ -76,8 +89,7 @@ export default () => ({
       transfers: transfers,
       originAccount: {
         ...state.originAccount,
-        availableBalance: typeOfTransaction === "debit" ? availableBalance(originAccount, transferData)
-        : state.originAccount.availableBalance
+        availableBalance: availableBalance(originAccount, transferData, typeOfTransaction)
       }
     };
   },

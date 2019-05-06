@@ -1,7 +1,7 @@
 const commonState = {
   originAccount: {
     number: "1123-A",
-    availableBalance: 10000,
+    availableBalance: 0,
     givenName: "Yuri",
     surName: "Ramos",
     document: "11111111"

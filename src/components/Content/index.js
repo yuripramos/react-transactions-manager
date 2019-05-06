@@ -17,7 +17,8 @@ export default connect(
     handleUserInputTransferCurrency,
     currentAccount,
     handleUserInputFavoredData,
-    favoredData
+    favoredData,
+    totalBalance
   }) => ({
     handleUserInputOriginAccount,
     accounts,
@@ -30,7 +31,8 @@ export default connect(
     handleUserInputTransferCurrency,
     currentAccount,
     handleUserInputFavoredData,
-    favoredData
+    favoredData,
+    totalBalance
   }),
   transferActions
 )(Content);

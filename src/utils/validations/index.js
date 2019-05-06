@@ -54,8 +54,11 @@ export const checkAccount = account => {
   return null;
 };
 
-export const availableBalance = (originAccount, transferData) => {
-  const value = Number.parseFloat(unFormatNumber(transferData.value));
+export const availableBalance = (originAccount, transferData, typeOfTransaction) => {
+  let value = Number.parseFloat(unFormatNumber(transferData.value));
+  if(typeOfTransaction === "debit") {
+    value = value * -1;
+  }
   const balance = Number.parseFloat(originAccount.availableBalance);
-  return balance - value;
+  return balance + value;
 };
