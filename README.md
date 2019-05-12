@@ -64,7 +64,7 @@ As required in the challenge the focus was in the UI itself and the 3 Features, 
 
 ## :pound: AvailableBalance Feature 
 
-1. The money will just be counted when you choose the type of transaction `debit` if you choose `credit` instead  the money will not be withdrawn.
+1. The money will be withdrawn when you choose the type of transaction `debit` if you choose `credit` instead  the money will credited to your account.
 
 2. The application allows negative amount of money.
 
