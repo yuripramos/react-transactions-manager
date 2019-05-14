@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { Container } from "../../styles/grid";
 import TransactionList from "./TransactionList";
-import { arrayOf, object } from "prop-types";
+import { arrayOf, object, func } from "prop-types";
 import TransactionDetail from "./TransactionDetail";
 import Hide from "../common/Hide";
 import { isResponsive } from "../../utils/getResolution";
@@ -15,8 +15,7 @@ class Content extends Component {
     this.innerRef = React.createRef();
   }
 
-
-  componentDidMount(){
+  componentDidMount() {
     this.props.totalBalance();
   }
 
@@ -31,9 +30,7 @@ class Content extends Component {
             </Hide>
           </Column>
           <Column width={isResponsive() ? 100 : 65}>
-            <TransactionDetail
-              innerRef={this.innerRef}
-            />
+            <TransactionDetail innerRef={this.innerRef} />
           </Column>
         </ContentWrapper>
       </Container>
@@ -45,6 +42,7 @@ Content.defaultProps = {};
 
 Content.propTypes = {
   transfers: arrayOf(object),
+  totalBalance: func
 };
 
 export default Content;

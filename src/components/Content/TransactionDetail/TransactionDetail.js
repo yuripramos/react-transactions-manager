@@ -36,7 +36,14 @@ export const isDisabled = (
   isValidDocument,
   isValidTypeOfTransaction
 ) => {
-  return !(isValidValue && isValidBank && isValidAgency && isValidAccount && isValidDocument && isValidTypeOfTransaction);
+  return !(
+    isValidValue &&
+    isValidBank &&
+    isValidAgency &&
+    isValidAccount &&
+    isValidDocument &&
+    isValidTypeOfTransaction
+  );
 };
 
 class TransactionDetail extends Component {
@@ -102,7 +109,9 @@ class TransactionDetail extends Component {
                     { name: "credit", value: "credit" }
                   ]}
                   value={transferData.typeOfTransaction}
-                  valid={() => checkTypeOfTransaction(transferData.typeOfTransaction)}
+                  valid={() =>
+                    checkTypeOfTransaction(transferData.typeOfTransaction)
+                  }
                   label="TYPE OF TRANSACTION"
                   tinyLabels
                   width={42}
@@ -111,7 +120,11 @@ class TransactionDetail extends Component {
               <Row>
                 <Input
                   onChange={e => {
-                    const valueAsCurrency = toCurrency(e.target.value, ".", ",");
+                    const valueAsCurrency = toCurrency(
+                      e.target.value,
+                      ".",
+                      ","
+                    );
                     handleUserInputTransferCurrency(valueAsCurrency);
                   }}
                   type="text"
@@ -123,7 +136,7 @@ class TransactionDetail extends Component {
                   value={transferData.value}
                   label="VALUE"
                   tinyLabels
-                  />
+                />
               </Row>
             </RowsWrapper>
           </Fieldset>
@@ -243,5 +256,5 @@ TransactionDetail.propTypes = {
   originAccount: object,
   createTransfer: func,
   resetFields: func,
-
+  favoredData: object
 };

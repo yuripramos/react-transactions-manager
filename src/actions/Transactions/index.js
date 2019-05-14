@@ -50,10 +50,12 @@ export default () => ({
       }
     };
   },
-  totalBalance: (state, e) => {
+  totalBalance: state => {
     const { transfers } = state;
     const newBalance = transfers.reduce((acc, val) => {
-      return val.typeOfTransaction === "credit" ? acc + parseFloat(val.ammount) : acc - parseFloat(val.ammount);
+      return val.typeOfTransaction === "credit"
+        ? acc + parseFloat(val.ammount)
+        : acc - parseFloat(val.ammount);
     }, 0);
 
     return {
@@ -61,7 +63,7 @@ export default () => ({
         ...state.originAccount,
         availableBalance: newBalance
       }
-    }
+    };
   },
   createTransfer: async (state, favoredData, transferData, originAccount) => {
     const body = {
@@ -82,18 +84,22 @@ export default () => ({
       originAccount: originAccount.number
     };
 
-    const transfers = [body,...state.transfers];
+    const transfers = [body, ...state.transfers];
     localStorage.setItem("transfers", JSON.stringify(transfers));
     const { typeOfTransaction } = transferData;
     return {
       transfers: transfers,
       originAccount: {
         ...state.originAccount,
-        availableBalance: availableBalance(originAccount, transferData, typeOfTransaction)
+        availableBalance: availableBalance(
+          originAccount,
+          transferData,
+          typeOfTransaction
+        )
       }
     };
   },
-  resetFields: _ => {
+  resetFields: () => {
     return {
       favoredData: {},
       transferData: {}

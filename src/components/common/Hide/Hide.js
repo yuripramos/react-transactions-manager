@@ -1,5 +1,5 @@
 import React from "react";
-import { string } from "prop-types";
+import { string, node } from "prop-types";
 import { HideStyle } from "./styles";
 
 function Hide({ children, below, above }) {
@@ -19,7 +19,8 @@ Hide.defaultProps = {
 
 Hide.propTypes = {
   below: string,
-  above: string
+  above: string,
+  children: node
 };
 
 export default Hide;

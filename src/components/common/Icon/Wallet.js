@@ -1,5 +1,5 @@
 import React from "react";
-
+/*eslint-disable*/
 function Wallet() {
   return (
     <svg

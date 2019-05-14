@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { string, oneOfType, func, bool, number } from "prop-types";
+import { string, oneOfType, func, bool, number, array } from "prop-types";
 import { DropdownWrapper, DropdownField } from "./styles";
 import { Label } from "../../common/Input/styles";
 
@@ -95,7 +95,11 @@ Dropdown.propTypes = {
   tinyLabels: bool,
   value: oneOfType([number, string]),
   valid: oneOfType([bool, func]),
-  onChange: func
+  onChange: func,
+  dataTest: string,
+  list: array,
+  width: number,
+  noEmptySelection: bool
 };
 
 export default Dropdown;

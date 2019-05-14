@@ -43,7 +43,7 @@ Button.defaultProps = {
   height: null,
   onClick: null,
   className: null,
-  small: false,
+  small: false
 };
 
 Button.propTypes = {
@@ -56,6 +56,8 @@ Button.propTypes = {
   className: string,
   small: bool,
   height: number,
+  dataTest: string,
+  opacity: string
 };
 
 export default Button;

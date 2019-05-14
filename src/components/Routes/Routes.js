@@ -13,7 +13,7 @@ class Routes extends Component {
         <Layout>
           <Route>
             <Switch>
-              <Route exact path="/dashboard" component={Content} />
+              <Route exact path="/" component={Content} />
               <Route component={NotFound} />
             </Switch>
           </Route>

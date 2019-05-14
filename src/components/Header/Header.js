@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { shape, func } from "prop-types";
+import { shape, func, array } from "prop-types";
 import { Container, Row, Column } from "../../styles/grid";
 import SidebarMenu from "../common/SidebarMenu";
 import Logo from "../../assets/currency.png";
@@ -26,7 +26,7 @@ const bmStylesClosed = {
 };
 
 const bmStylesOpened = {
-    bmBurgerButton: {
+  bmBurgerButton: {
     display: "inline-block",
     position: "absolute",
     top: `${rem(20)}`,
@@ -41,7 +41,7 @@ const bmStylesOpened = {
     left: 0,
     top: 0
   }
-}
+};
 
 class Header extends Component {
   constructor(props) {
@@ -118,5 +118,6 @@ export default Header;
 Header.propTypes = {
   history: shape({
     push: func
-  })
+  }),
+  transfers: array
 };
